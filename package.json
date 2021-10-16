@@ -1,0 +1,41 @@
+{
+  "name": "measurement-assistant-api",
+  "version": "1.0.0",
+  "description": "A web service, which helps you choose the right size for clothes or shoes based on your parameters for most size charts, including well-known brands.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon -e ts --exec \"npm run build && npm run start\"",
+    "lint": "eslint *.{js,ts,json}",
+    "lint:fix": "eslint *.{js,ts,json} --fix",
+    "format": "prettier --check *.{js,ts,json}",
+    "format:fix": "prettier --write *.{js,ts,json}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeasurementAssistant/Measurement-Assistant.git"
+  },
+  "author": "Valeriia Morkvina, Mariia Som",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeasurementAssistant/Measurement-Assistant/issues"
+  },
+  "homepage": "https://github.com/MeasurementAssistant/Measurement-Assistant#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^16.11.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "fastify": "^3.22.0",
+    "mongoose": "^6.0.11",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  }
+}
