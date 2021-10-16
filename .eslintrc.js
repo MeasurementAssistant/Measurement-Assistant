@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:sonarjs/recommended',
+    'plugin:jest/recommended',
     'prettier'
   ],
   parser: '@typescript-eslint/parser',
@@ -14,9 +15,14 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['@typescript-eslint', 'sonarjs'],
+  plugins: ['@typescript-eslint', 'sonarjs', 'jest'],
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
     'sonarjs/cognitive-complexity': 'error',
     'sonarjs/no-identical-expressions': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
