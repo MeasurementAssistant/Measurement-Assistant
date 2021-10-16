@@ -2,6 +2,7 @@ import fastify from 'fastify';
 
 const server = fastify();
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 server.get('/ping', async (request, reply) => {
   return 'pong\n';
 });

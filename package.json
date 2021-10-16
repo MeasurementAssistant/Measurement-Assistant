@@ -13,6 +13,19 @@
     "format": "prettier --check *.{js,ts,json}",
     "format:fix": "prettier --write *.{js,ts,json}"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,js}": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MeasurementAssistant/Measurement-Assistant.git"
@@ -23,7 +36,9 @@
     "url": "https://github.com/MeasurementAssistant/Measurement-Assistant/issues"
   },
   "homepage": "https://github.com/MeasurementAssistant/Measurement-Assistant#readme",
-  "dependencies": {},
+  "dependencies": {
+    "husky": "^4.3.8"
+  },
   "devDependencies": {
     "@types/node": "^16.11.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -33,6 +48,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-sonarjs": "^0.10.0",
     "fastify": "^3.22.0",
+    "lint-staged": "^11.2.3",
     "mongoose": "^6.0.11",
     "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
