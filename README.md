@@ -46,3 +46,5 @@ The API is capable of delivering results in a total of 10 world languages. To ch
 - MongoDB
 - JWT(JSON Web Tokens)
 - Fastify
+
+https://drive.google.com/drive/folders/1P86cIQbJM0IKmVIOJ1e-MsjfNWqNGcrI
