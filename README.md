@@ -2,7 +2,7 @@
 
 ### What is Measurement Assistant API?
 
-A web service, which helps you choose the right size for clothes or shoes based on your parameters for most size charts, including well-known brands.
+It`s a Rest API service, which helps you choose the right size for clothes or shoes based on your parameters for most size charts, including well-known brands.
 
 - API Authentication with access_key
 
