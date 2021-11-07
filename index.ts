@@ -15,6 +15,9 @@ server.get('/ping', async (request, reply) => {
 server.route(routes.getShoesSizeCm);
 server.route(routes.getShoesSizeIn);
 
+server.route(routes.getClothesSizeCm);
+server.route(routes.getClothesSizeIn);
+
 server.listen(3000, (err, address) => {
   if (err) {
     console.error(err);
