@@ -23,7 +23,7 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
-    'sonarjs/cognitive-complexity': 'error',
+    'sonarjs/cognitive-complexity': ['error', 16],
     'sonarjs/no-identical-expressions': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/naming-convention': [
