@@ -1,5 +1,6 @@
 import fastify from 'fastify';
 import PostgresDriver from './src/db/pg';
+import * as routes from './src/api';
 
 const server = fastify();
 const dbDriver = new PostgresDriver();
@@ -10,6 +11,8 @@ server.get('/ping', async (request, reply) => {
   await dbDriver.disconnect();
   return 'pong\n';
 });
+
+server.route(routes.getShoesSizeCm);
 
 server.listen(3000, (err, address) => {
   if (err) {

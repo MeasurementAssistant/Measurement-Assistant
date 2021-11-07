@@ -37,8 +37,7 @@
   },
   "homepage": "https://github.com/MeasurementAssistant/Measurement-Assistant#readme",
   "dependencies": {
-    "fastify": "^3.22.0",
-    "pg": "^8.7.1"
+    "fastify": "^3.22.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.0",

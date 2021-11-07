@@ -1,0 +1,1 @@
+export { getShoesSizeCm } from './sizeChartShoes';
