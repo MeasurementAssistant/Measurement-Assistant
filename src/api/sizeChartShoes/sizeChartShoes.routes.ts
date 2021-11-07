@@ -1,6 +1,6 @@
 import { RouteHandlerMethod, RouteOptions } from 'fastify';
 import { getShoesSizeSchema } from './sizeChartShoes.dto';
-import { getShoesSizeCmController } from './sizeChartShoes.controller';
+import { getShoesSizeCmController, getShoesSizeInController } from './sizeChartShoes.controller';
 
 export const getShoesSizeCm: RouteOptions = {
   method: 'GET',
@@ -13,5 +13,5 @@ export const getShoesSizeIn: RouteOptions = {
   method: 'GET',
   url: '/shoes-size-in',
   schema: getShoesSizeSchema,
-  handler: () => console.log('g')
+  handler: <RouteHandlerMethod>getShoesSizeInController
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FastifyRequest, FastifyReply } from 'fastify';
 import HttpError from '../../errors/httpErrors';
 import SizeChartShoes from './sizeChartShoes.service';
@@ -14,7 +15,21 @@ export const getShoesSizeCmController = (
   try {
     const result = service.getSizeChartforCmFootLength(footLength);
     reply.code(200).send({ shoesSizes: result });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    reply.code(500).send({ error: <HttpError>error.message });
+  }
+};
+
+export const getShoesSizeInController = (
+  request: FastifyRequest<{
+    Querystring: { footLength: number };
+  }>,
+  reply: FastifyReply
+) => {
+  const { footLength } = request.query;
+  try {
+    const result = service.getSizeChartforInFootLength(footLength);
+    reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
   }
