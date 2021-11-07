@@ -11,7 +11,7 @@ export const getShoesSizeCm: RouteOptions = {
 
 export const getShoesSizeIn: RouteOptions = {
   method: 'GET',
-  url: '/shoes-size-in',
+  url: '/api/shoes-size-in',
   schema: getShoesSizeSchema,
   handler: <RouteHandlerMethod>getShoesSizeInController
 };

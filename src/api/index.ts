@@ -1,1 +1,1 @@
-export { getShoesSizeCm } from './sizeChartShoes';
+export * from './sizeChartShoes';

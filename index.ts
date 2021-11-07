@@ -13,6 +13,7 @@ server.get('/ping', async (request, reply) => {
 });
 
 server.route(routes.getShoesSizeCm);
+server.route(routes.getShoesSizeIn);
 
 server.listen(3000, (err, address) => {
   if (err) {
