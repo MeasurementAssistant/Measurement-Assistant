@@ -34,3 +34,18 @@ export const getShoesSizeInController = (
     reply.code(500).send({ error: <HttpError>error.message });
   }
 };
+
+// export const getShoesSizeAdidasController = (
+//   request: FastifyRequest<{
+//     Querystring: { footLength: number };
+//   }>,
+//   reply: FastifyReply
+// ) => {
+//   const { footLength } = request.query;
+//   try {
+//     const result = service.getSizeChartforInFootLength(footLength);
+//     reply.code(200).send({ shoesSizes: result });
+//   } catch (error: any) {
+//     reply.code(500).send({ error: <HttpError>error.message });
+//   }
+// };
