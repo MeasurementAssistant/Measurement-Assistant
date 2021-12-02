@@ -35,17 +35,17 @@ export const getShoesSizeInController = (
   }
 };
 
-// export const getShoesSizeAdidasController = (
-//   request: FastifyRequest<{
-//     Querystring: { footLength: number };
-//   }>,
-//   reply: FastifyReply
-// ) => {
-//   const { footLength } = request.query;
-//   try {
-//     const result = service.getSizeChartforInFootLength(footLength);
-//     reply.code(200).send({ shoesSizes: result });
-//   } catch (error: any) {
-//     reply.code(500).send({ error: <HttpError>error.message });
-//   }
-// };
+export const getShoesSizeAdidasController = async (
+  request: FastifyRequest<{
+    Querystring: { footLength: number; sex: string };
+  }>,
+  reply: FastifyReply
+) => {
+  const { footLength, sex } = request.query;
+  try {
+    const result = await service.getSizeChartAdidas(footLength, sex);
+    reply.code(200).send({ shoesSize: result });
+  } catch (error: any) {
+    reply.code(500).send({ error: <HttpError>error.message });
+  }
+};

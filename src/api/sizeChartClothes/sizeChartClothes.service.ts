@@ -15,17 +15,17 @@ class SizeChartClothes {
         return sizeResult;
       }
       return {
-        EU: 'not found',
-        UK: 'not found',
-        USA: 'not found',
+        EU: 0,
+        UK: 0,
+        USA: 0,
         SexID: 'not found',
-        International: 'not found',
-        BustCm: 'not found',
-        BustIn: 'not found',
-        WaistCm: 'not found',
-        WaistIn: 'not found',
-        HipsCm: 'not found',
-        HipsIn: 'not found'
+        International: 0,
+        BustCm: 0,
+        BustIn: 0,
+        WaistCm: 0,
+        WaistIn: 0,
+        HipsCm: 0,
+        HipsIn: 0
       };
     } catch (error) {
       throw new HttpError(<string>error);
@@ -45,17 +45,17 @@ class SizeChartClothes {
         return sizeResult;
       }
       return {
-        EU: 'not found',
-        UK: 'not found',
-        USA: 'not found',
+        EU: 0,
+        UK: 0,
+        USA: 0,
         SexID: 'not found',
-        International: 'not found',
-        BustCm: 'not found',
-        BustIn: 'not found',
-        WaistCm: 'not found',
-        WaistIn: 'not found',
-        HipsCm: 'not found',
-        HipsIn: 'not found'
+        International: 0,
+        BustCm: 0,
+        BustIn: 0,
+        WaistCm: 0,
+        WaistIn: 0,
+        HipsCm: 0,
+        HipsIn: 0
       };
     } catch (error) {
       throw new HttpError(<string>error);

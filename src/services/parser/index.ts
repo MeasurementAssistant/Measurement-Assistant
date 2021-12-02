@@ -3,15 +3,17 @@ import cheerio from 'cheerio';
 
 const url = 'https://www.adidas.ru/help-topics-size_charts.html';
 
-export const getAdidasSizeChart = () => {
-  axios
+export const getAdidasSizeChart = async (): Promise<Array<{ [key: string]: number | string }>> => {
+  let result: Array<{ [key: string]: number | string }> = [];
+  await axios
     .get(url)
     .then((response) => {
-      getData(response.data);
+      result = getData(response.data);
     })
     .catch((error) => {
       console.log(error);
     });
+  return result;
 };
 
 const getData = (html: string) => {
@@ -37,4 +39,3 @@ const getData = (html: string) => {
   }
   return result;
 };
-getAdidasSizeChart();
