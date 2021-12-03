@@ -4,9 +4,10 @@ export const getShoesSizeSchema: FastifySchema = {
   querystring: {
     type: 'object',
     properties: {
-      footLength: { type: 'number' }
+      footLength: { type: 'number' },
+      sex: { type: 'string', enum: ['female', 'male'] }
     },
-    required: ['footLength']
+    required: ['footLength', 'sex']
   },
   response: {
     200: {
@@ -18,7 +19,7 @@ export const getShoesSizeSchema: FastifySchema = {
             UK: { type: 'number' },
             USA: { type: 'number' },
             EU: { type: 'number' },
-            SexID: { type: 'number' },
+            Sex: { type: 'string' },
             cm: { type: 'number' },
             in: { type: 'number' }
           }
@@ -33,7 +34,7 @@ export const getShoesSizeSchemaAdidas: FastifySchema = {
     type: 'object',
     properties: {
       footLength: { type: 'number' },
-      sex: { type: 'string' }
+      sex: { type: 'string', enum: ['female', 'male'] }
     },
     required: ['footLength', 'sex']
   },

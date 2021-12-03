@@ -6,9 +6,10 @@ export const getClothesSizeSchema: FastifySchema = {
     properties: {
       waistSize: { type: 'number' },
       hipsSize: { type: 'number' },
-      bustSize: { type: 'number' }
+      bustSize: { type: 'number' },
+      sex: { type: 'string', enum: ['female', 'male'] }
     },
-    required: ['waistSize', 'hipsSize', 'bustSize']
+    required: ['waistSize', 'hipsSize', 'bustSize', 'sex']
   },
   response: {
     200: {
@@ -20,7 +21,7 @@ export const getClothesSizeSchema: FastifySchema = {
             EU: { type: 'number' },
             UK: { type: 'number' },
             USA: { type: 'number' },
-            SexID: { type: 'number' },
+            Sex: { type: 'string' },
             International: { type: 'number' },
             BustCm: { type: 'number' },
             BustIn: { type: 'number' },

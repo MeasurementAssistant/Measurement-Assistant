@@ -4,43 +4,43 @@ import { sizeChartShoesData } from '../../data/data';
 import { getAdidasSizeChart } from '../../services/parser';
 
 class SizeChartShoes {
-  // private let sizeAdidasNF=
+  private sizeNF: { [key: string]: number | string } = {
+    UK: 0,
+    USA: 0,
+    EU: 0,
+    Sex: 'not found',
+    cm: 0,
+    in: 0
+  };
 
-  getSizeChartforCmFootLength(footLengthCm: number): { [key: string]: number | string } {
+  getSizeChartforCmFootLength(
+    footLengthCm: number,
+    sex: string
+  ): { [key: string]: number | string } {
     try {
-      //запрос по footlength cm
+      //TODO: запрос по footlength cm и sex
       const sizeResult: { [key: string]: number | string } = sizeChartShoesData[0];
       if (sizeResult) {
         return sizeResult;
       }
-      return {
-        UK: 0,
-        USA: 0,
-        EU: 0,
-        SexID: 'not found',
-        cm: 0
-      };
+      return this.sizeNF;
     } catch (error) {
       throw new HttpError(<string>error);
     }
   }
 
   // eslint-disable-next-line sonarjs/no-identical-functions
-  getSizeChartforInFootLength(footLengthIn: number): { [key: string]: number | string } {
+  getSizeChartforInFootLength(
+    footLengthIn: number,
+    sex: string
+  ): { [key: string]: number | string } {
     try {
-      //запрос по footlength in
+      //TODO:запрос по footlength in
       const sizeResult: { [key: string]: number | string } = sizeChartShoesData[0];
       if (sizeResult) {
         return sizeResult;
       }
-      return {
-        UK: 0,
-        USA: 0,
-        EU: 0,
-        SexID: 'not found',
-        cm: 0,
-        in: 0
-      };
+      return this.sizeNF;
     } catch (error) {
       throw new HttpError(<string>error);
     }
