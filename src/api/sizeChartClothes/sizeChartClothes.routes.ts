@@ -7,14 +7,14 @@ import {
 
 export const getClothesSizeCm: RouteOptions = {
   method: 'GET',
-  url: '/api/clothes-size-cm',
+  url: '/api/clothes-size/cm',
   schema: getClothesSizeSchema,
   handler: <RouteHandlerMethod>getClothesSizeCmController
 };
 
 export const getClothesSizeIn: RouteOptions = {
   method: 'GET',
-  url: '/api/clothes-size-in',
+  url: '/api/clothes-size/in',
   schema: getClothesSizeSchema,
   handler: <RouteHandlerMethod>getClothesSizeInController
 };

@@ -29,7 +29,7 @@ export const getShoesSizeSchema: FastifySchema = {
   }
 };
 
-export const getShoesSizeSchemaAdidas: FastifySchema = {
+export const getShoesSizeSchemaAR: FastifySchema = {
   querystring: {
     type: 'object',
     properties: {
@@ -46,7 +46,7 @@ export const getShoesSizeSchemaAdidas: FastifySchema = {
           type: 'object',
           properties: {
             RU: { type: 'number' },
-            EU: { type: 'string' },
+            EU: { type: ['string', 'number'] },
             UK: { type: 'number' },
             USA: { type: 'number' },
             Sex: { type: 'string' },
