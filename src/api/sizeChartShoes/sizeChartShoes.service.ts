@@ -46,13 +46,14 @@ class SizeChartShoes {
     }
   }
 
-  async getSizeChartAdidas(
+  async getSizeChartAdidasShoes(
     footLengthCm: number,
     sex: string
-  ): Promise<{ [key: string]: number | string }> {
+  ): Promise<{ [key: string]: number | string | { [key: string]: number } }> {
     try {
-      const sizes: Array<{ [key: string]: number | string }> = await getAdidasSizeChart();
-      let sizeResult: { [key: string]: number | string } = {};
+      const sizes: Array<{ [key: string]: number | string | { [key: string]: number } }> =
+        await getAdidasSizeChart('shoes');
+      let sizeResult: { [key: string]: number | string | { [key: string]: number } } = {};
 
       if (sizes) {
         for (let index = 0; index <= sizes.length - 2; index++) {

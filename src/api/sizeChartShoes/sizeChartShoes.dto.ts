@@ -46,7 +46,7 @@ export const getShoesSizeSchemaAdidas: FastifySchema = {
           type: 'object',
           properties: {
             RU: { type: 'number' },
-            EU: { type: 'number' },
+            EU: { type: 'string' },
             UK: { type: 'number' },
             USA: { type: 'number' },
             Sex: { type: 'string' },

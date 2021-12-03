@@ -43,7 +43,7 @@ export const getShoesSizeAdidasController = async (
 ) => {
   const { footLength, sex } = request.query;
   try {
-    const result = await service.getSizeChartAdidas(footLength, sex);
+    const result = await service.getSizeChartAdidasShoes(footLength, sex);
     reply.code(200).send({ shoesSize: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });

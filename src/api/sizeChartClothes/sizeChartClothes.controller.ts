@@ -2,7 +2,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import HttpError from '../../errors/httpErrors';
 import SizeChartClothes from './sizeChartClothes.service';
-import { getAdidasSizeChart } from '../../services/parser';
 
 const service = new SizeChartClothes();
 
@@ -14,7 +13,6 @@ export const getClothesSizeCmController = (
 ) => {
   const { waist, hips, bust, sex } = request.query; //
   try {
-    getAdidasSizeChart();
     const result = service.getSizeChartClothesforCm(waist, hips, bust, sex);
     reply.code(200).send({ clothesSizes: result });
   } catch (error: any) {
