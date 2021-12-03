@@ -7,13 +7,13 @@ const service = new SizeChartShoes();
 
 export const getShoesSizeCmController = (
   request: FastifyRequest<{
-    Querystring: { footLength: number };
+    Querystring: { footLength: number; sex: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { footLength } = request.query;
+  const { footLength, sex } = request.query;
   try {
-    const result = service.getSizeChartforCmFootLength(footLength);
+    const result = service.getSizeChartforCmFootLength(footLength, sex);
     reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
@@ -22,13 +22,13 @@ export const getShoesSizeCmController = (
 
 export const getShoesSizeInController = (
   request: FastifyRequest<{
-    Querystring: { footLength: number };
+    Querystring: { footLength: number; sex: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { footLength } = request.query;
+  const { footLength, sex } = request.query;
   try {
-    const result = service.getSizeChartforInFootLength(footLength);
+    const result = service.getSizeChartforInFootLength(footLength, sex);
     reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
