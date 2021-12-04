@@ -76,7 +76,8 @@ class SizeChartClothes {
     try {
       const sizes: Array<{ [key: string]: number | string }> = await getReebokSizeChart('clothes');
       let sizeResult: { [key: string]: number | string } = {};
-
+      sizes.unshift({ RU: 0, EU: 0, BustCm: 0, WaistCm: 0, HipsCm: 0, Sex: 'female' });
+      sizes.unshift({ RU: 0, EU: 0, BustCm: 0, WaistCm: 0, HipsCm: 0, Sex: 'male' });
       if (sizes) {
         for (let index = 0; index <= sizes.length - 2; index++) {
           if (
@@ -92,7 +93,6 @@ class SizeChartClothes {
           }
         }
       }
-
       if (sizeResult && Object.keys(sizeResult).length) {
         return sizeResult;
       }
@@ -111,7 +111,7 @@ class SizeChartClothes {
       const sizes: Array<{ [key: string]: string | number }> =
         await getAdidasSizeChartClothesFemale();
       let sizeResult: { [key: string]: string | number } = {};
-      sizes.unshift({ RU: 0, EU: '', BustCm: 0, WaistCm: 0, HipsCm: 0, Sex: 'female' });
+      sizes.unshift({ RU: 0, EU: 0, BustCm: 0, WaistCm: 0, HipsCm: 0, Sex: 'female' });
       if (sizes) {
         for (let index = 0; index <= sizes.length - 2; index++) {
           if (
@@ -129,14 +129,7 @@ class SizeChartClothes {
       if (sizeResult && Object.keys(sizeResult).length) {
         return sizeResult;
       }
-      return {
-        RU: 0,
-        EU: 0,
-        UK: 0,
-        USA: 0,
-        Sex: 'not found',
-        cm: 0
-      };
+      return this.sizeARNF;
     } catch (error) {
       throw new HttpError(<string>error);
     }
@@ -199,14 +192,7 @@ class SizeChartClothes {
           Sex: 'male'
         };
       }
-      return {
-        RU: 0,
-        EU: 0,
-        BustCm: 0,
-        WaistCm: 0,
-        HipsCm: 0,
-        Sex: 'not found'
-      };
+      return this.sizeARNF;
     } catch (error) {
       throw new HttpError(<string>error);
     }

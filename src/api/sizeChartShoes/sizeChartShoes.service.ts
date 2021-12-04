@@ -62,7 +62,7 @@ class SizeChartShoes {
       const sizes: Array<{ [key: string]: number | string | { [key: string]: number } }> =
         await getAdidasSizeChartShoes();
       let sizeResult: { [key: string]: number | string | { [key: string]: number } } = {};
-
+      sizes.unshift({ RU: 0, EU: 0, UK: 0, USmale: 0, USfemale: 0, cm: 0 });
       if (sizes) {
         for (let index = 0; index <= sizes.length - 2; index++) {
           if (footLengthCm > sizes[index].cm && footLengthCm <= sizes[index + 1].cm) {
@@ -93,13 +93,17 @@ class SizeChartShoes {
     try {
       const sizes: Array<{ [key: string]: number | string }> = await getReebokSizeChart('shoes');
       let sizeResult: { [key: string]: number | string } = {};
-
+      sizes.unshift(
+        { RU: 0, EU: 0, UK: 0, USA: 0, Sex: 'female', cm: 0 },
+        { RU: 0, EU: 0, UK: 0, USA: 0, Sex: 'male', cm: 0 }
+      );
       if (sizes) {
-        for (let index = 0; index <= sizes.length - 2; index++) {
+        for (let index = 0; index <= sizes.length - 1; index++) {
           if (
             footLengthCm > sizes[index].cm &&
             footLengthCm <= sizes[index + 1].cm &&
-            sex == sizes[index + 1].Sex
+            sex == sizes[index + 1].Sex &&
+            sex == sizes[index].Sex
           ) {
             sizeResult = sizes[index + 1];
           }
