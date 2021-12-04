@@ -8,21 +8,21 @@ import {
 
 export const getShoesSizeCm: RouteOptions = {
   method: 'GET',
-  url: '/api/shoes-size-cm',
+  url: '/api/shoes-size/cm',
   schema: getShoesSizeSchema,
   handler: <RouteHandlerMethod>getShoesSizeCmController
 };
 
 export const getShoesSizeIn: RouteOptions = {
   method: 'GET',
-  url: '/api/shoes-size-in',
+  url: '/api/shoes-size/in',
   schema: getShoesSizeSchema,
   handler: <RouteHandlerMethod>getShoesSizeInController
 };
 
 export const getShoesSizeAdidas: RouteOptions = {
   method: 'GET',
-  url: '/api/shoes-size-adidas',
+  url: '/api/shoes-size/cm/adidas',
   schema: getShoesSizeSchemaAdidas,
   handler: <RouteHandlerMethod>getShoesSizeAdidasController
 };

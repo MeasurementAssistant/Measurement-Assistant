@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import HttpError from '../../errors/httpErrors';
 import { sizeChartShoesData } from '../../data/data';
-import { getAdidasSizeChart } from '../../services/parser';
+import { getAdidasSizeChartShoes } from '../../services/parser';
 
 class SizeChartShoes {
   private sizeNF: { [key: string]: number | string } = {
@@ -52,7 +52,7 @@ class SizeChartShoes {
   ): Promise<{ [key: string]: number | string | { [key: string]: number } }> {
     try {
       const sizes: Array<{ [key: string]: number | string | { [key: string]: number } }> =
-        await getAdidasSizeChart('shoes');
+        await getAdidasSizeChartShoes();
       let sizeResult: { [key: string]: number | string | { [key: string]: number } } = {};
 
       if (sizes) {

@@ -20,6 +20,8 @@ server.route(routes.getBodyTypeCm);
 server.route(routes.getBodyTypeIn);
 server.route(routes.getShoesSizeAdidas);
 
+server.route(routes.getClothesSizeAdidas);
+
 server.listen(3000, (err, address) => {
   if (err) {
     console.error(err);

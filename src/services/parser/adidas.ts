@@ -3,21 +3,49 @@ import cheerio from 'cheerio';
 
 const url = 'https://www.adidas.ru/help-topics-size_charts.html';
 
-export const getAdidasSizeChart = async (
-  type: string
-): Promise<Array<{ [key: string]: number | string | { [key: string]: number } }>> => {
-  let result: Array<{ [key: string]: number | string | { [key: string]: number } }> = [];
+export const getAdidasSizeChartShoes = async (): Promise<
+  Array<{ [key: string]: string | number }>
+> => {
+  let resultShoes: Array<{ [key: string]: string | number }> = [];
   await axios
     .get(url)
     .then((response) => {
-      type == 'shoes'
-        ? (result = getShoesData(response.data))
-        : (result = getClothesData(response.data));
+      resultShoes = getShoesData(response.data);
     })
     .catch((error) => {
       console.log(error);
     });
-  return result;
+  return resultShoes;
+};
+
+export const getAdidasSizeChartClothesMale = async (): Promise<
+  Array<{ [key: string]: { [key: string]: number | string } }>
+> => {
+  let resultClothes: Array<{ [key: string]: { [key: string]: number | string } }> = [];
+  await axios
+    .get(url)
+    .then((response) => {
+      resultClothes = getClothesDataMale(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return resultClothes;
+};
+
+export const getAdidasSizeChartClothesFemale = async (): Promise<
+  Array<{ [key: string]: string | number }>
+> => {
+  let resultClothes: Array<{ [key: string]: string | number }> = [];
+  await axios
+    .get(url)
+    .then((response) => {
+      resultClothes = getClothesDataFemale(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return resultClothes;
 };
 
 const getShoesData = (html: string) => {
@@ -41,14 +69,43 @@ const getShoesData = (html: string) => {
       cm: Number(data[i + 5].split('см')[0])
     });
   }
-  console.log(result);
   return result;
 };
-const getClothesData = (html: string) => {
-  const result: Array<{
-    [key: string]: string | number | { [key: string]: number };
-  }> = [];
-  let data: Array<string> = [];
+const getClothesDataMale = (html: string) => {
+  const result: Array<{ [key: string]: { [key: string]: number | string } }> = [];
+  const data: Array<string> = [];
+  const $ = cheerio.load(html);
+  $(
+    'div#tabs-4 div#content-asset-size-chart-size-apparel.sizechart div.contentasset div.size_chart.man div.size_chart_content div.size_chart_table table tbody tr:not(:first-of-type) td'
+  ).each((i, elem) => {
+    data.push($(elem).text());
+  });
+  for (let i = 0; i < data.length - 4; i += 4) {
+    result.push({
+      sizes: {
+        RU: data[i].substring(0, data[i].length - 5),
+        EU: data[i].substring(data[i].length - 5)
+      },
+      BustCm: {
+        from: Number(data[i + 1].split('-')[0]),
+        to: Number(data[i + 1].split('-')[1].replace(' см', ''))
+      },
+      WaistCm: {
+        from: Number(data[i + 2].split('-')[0]),
+        to: Number(data[i + 2].split('-')[1].replace(' см', ''))
+      },
+      HipsCm: {
+        from: Number(data[i + 3].split('-')[0]),
+        to: Number(data[i + 3].split('-')[1].replace(' см', ''))
+      }
+    });
+  }
+  return result;
+};
+
+const getClothesDataFemale = (html: string) => {
+  const result: Array<{ [key: string]: string | number }> = [];
+  const data: Array<string> = [];
   const $ = cheerio.load(html);
   $(
     'div#tabs-4 div#content-asset-size-chart-size-women-apparel.sizechart div.contentasset div.size_chart.man div.size_chart_content div.size_chart_table table tbody tr:not(:first-of-type) td'
@@ -65,33 +122,5 @@ const getClothesData = (html: string) => {
       Sex: 'female'
     });
   }
-  data = [];
-  $(
-    'div#tabs-4 div#content-asset-size-chart-size-apparel.sizechart div.contentasset div.size_chart.man div.size_chart_content div.size_chart_table table tbody tr:not(:first-of-type) td'
-  ).each((i, elem) => {
-    data.push($(elem).text());
-  });
-  for (let i = 0; i < data.length - 4; i += 4) {
-    result.push({
-      RU: data[i].substring(0, data[i].length - 5),
-      EU: data[i].substring(data[i].length - 5),
-      BustCm: {
-        from: Number(data[i + 1].split('-')[0]),
-        to: Number(data[i + 1].split('-')[1].replace(' см', ''))
-      },
-      WaistCm: {
-        from: Number(data[i + 2].split('-')[0]),
-        to: Number(data[i + 2].split('-')[1].replace(' см', ''))
-      },
-      HipsCm: {
-        from: Number(data[i + 3].split('-')[0]),
-        to: Number(data[i + 3].split('-')[1].replace(' см', ''))
-      },
-      Sex: 'male'
-    });
-  }
-  console.log(result);
   return result;
 };
-// getAdidasSizeChart('clothes');
-// getAdidasSizeChart('shoes');
