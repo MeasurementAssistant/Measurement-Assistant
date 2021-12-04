@@ -5,7 +5,7 @@ import SizeChartShoes from './sizeChartShoes.service';
 
 const service = new SizeChartShoes();
 
-export const getShoesSizeCmController = (
+export const getShoesSizeCmController = async (
   request: FastifyRequest<{
     Querystring: { footLength: number; sex: string };
   }>,
@@ -13,7 +13,8 @@ export const getShoesSizeCmController = (
 ) => {
   const { footLength, sex } = request.query;
   try {
-    const result = service.getSizeChartforCmFootLength(footLength, sex);
+    const result = await service.getSizeChartforCmFootLength(footLength, sex);
+    console.log(result);
     reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });

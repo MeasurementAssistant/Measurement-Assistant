@@ -21,7 +21,7 @@ export const getShoesSizeSchema: FastifySchema = {
             EU: { type: 'number' },
             Sex: { type: 'string' },
             cm: { type: 'number' },
-            in: { type: 'number' }
+            inch: { type: 'number' }
           }
         }
       }

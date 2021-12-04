@@ -1,16 +1,10 @@
 import fastify from 'fastify';
 import PostgresDriver from './src/db/pg';
+import dbInitQuery from './src/db/pg/db_init';
 import * as routes from './src/api';
 
 const server = fastify();
 const dbDriver = new PostgresDriver();
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-server.get('/ping', async (request, reply) => {
-  await dbDriver.connect();
-  await dbDriver.disconnect();
-  return 'pong\n';
-});
 
 server.route(routes.getShoesSizeCm);
 server.route(routes.getShoesSizeIn);
@@ -21,6 +15,15 @@ server.route(routes.getClothesSizeIn);
 server.route(routes.getClothesSizeReebok);
 server.route(routes.getBodyTypeCm);
 server.route(routes.getBodyTypeIn);
+
+// IIEF - Immediately invoked functional XPathExpression
+
+(async () => {
+  await dbDriver.connect();
+  const initResult = await dbDriver.executeQuery(dbInitQuery);
+  await dbDriver.disconnect();
+  console.log(`DB init result`, initResult);
+})();
 
 server.listen(3000, (err, address) => {
   if (err) {

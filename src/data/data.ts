@@ -15,7 +15,7 @@ export const sizeChartShoesData = [
     EU: 38,
     SexID: sexData[1].id,
     cm: 27,
-    in: 10.6
+    inch: 10.6
   }
 ];
 

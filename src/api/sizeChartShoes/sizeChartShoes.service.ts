@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import HttpError from '../../errors/httpErrors';
 import { sizeChartShoesData } from '../../data/data';
+import PostgresDriver from '../../db/pg';
+import { getSizeShoesCm } from '../../db/pg/db_queries';
 import { getAdidasSizeChart, getReebokSizeChart } from '../../services/parser';
+import { QueryResult } from 'pg';
 
 class SizeChartShoes {
   private sizeNF: { [key: string]: number | string } = {
@@ -10,7 +13,7 @@ class SizeChartShoes {
     EU: 0,
     Sex: 'not found',
     cm: 0,
-    in: 0
+    inch: 0
   };
   private sizeARNF: { [key: string]: number | string } = {
     RU: 0,
@@ -20,16 +23,20 @@ class SizeChartShoes {
     Sex: 'not found',
     cm: 0
   };
+  private dbDriver = new PostgresDriver();
 
-  getSizeChartforCmFootLength(
+  async getSizeChartforCmFootLength(
     footLengthCm: number,
     sex: string
-  ): { [key: string]: number | string } {
+  ): Promise<{ [key: string]: number | string } | QueryResult> {
     try {
-      //TODO: запрос по footlength cm и sex
-      const sizeResult: { [key: string]: number | string } = sizeChartShoesData[0];
+      await this.dbDriver.connect();
+      const sizeResult: QueryResult = await this.dbDriver.executeQuery(
+        getSizeShoesCm(footLengthCm, sex)
+      );
+      await this.dbDriver.disconnect();
       if (sizeResult) {
-        return sizeResult;
+        return sizeResult.rows[0];
       }
       return this.sizeNF;
     } catch (error) {
