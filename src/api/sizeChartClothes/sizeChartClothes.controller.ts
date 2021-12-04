@@ -7,13 +7,13 @@ const service = new SizeChartClothes();
 
 export const getClothesSizeCmController = (
   request: FastifyRequest<{
-    Querystring: { waist: number; hips: number; bust: number; sex: string };
+    Querystring: { waistSize: number; hipsSize: number; bustSize: number; sex: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { waist, hips, bust, sex } = request.query; //
+  const { waistSize, hipsSize, bustSize, sex } = request.query;
   try {
-    const result = service.getSizeChartClothesforCm(waist, hips, bust, sex);
+    const result = service.getSizeChartClothesforCm(waistSize, hipsSize, bustSize, sex);
     reply.code(200).send({ clothesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
@@ -22,13 +22,28 @@ export const getClothesSizeCmController = (
 
 export const getClothesSizeInController = (
   request: FastifyRequest<{
-    Querystring: { waist: number; hips: number; bust: number; sex: string };
+    Querystring: { waistSize: number; hipsSize: number; bustSize: number; sex: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { waist, hips, bust, sex } = request.query;
+  const { waistSize, hipsSize, bustSize, sex } = request.query;
   try {
-    const result = service.getSizeChartClothesforIn(waist, hips, bust, sex);
+    const result = service.getSizeChartClothesforIn(waistSize, hipsSize, bustSize, sex);
+    reply.code(200).send({ clothesSizes: result });
+  } catch (error: any) {
+    reply.code(500).send({ error: <HttpError>error.message });
+  }
+};
+
+export const getClothesReebok = async (
+  request: FastifyRequest<{
+    Querystring: { waistSize: number; hipsSize: number; bustSize: number; sex: string };
+  }>,
+  reply: FastifyReply
+) => {
+  const { waistSize, hipsSize, bustSize, sex } = request.query;
+  try {
+    const result = await service.getSizeChartReebokClothes(waistSize, hipsSize, bustSize, sex);
     reply.code(200).send({ clothesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });

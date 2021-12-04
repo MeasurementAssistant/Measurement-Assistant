@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import HttpError from '../../errors/httpErrors';
 import { sizeChartShoesData } from '../../data/data';
-import { getAdidasSizeChartShoes } from '../../services/parser';
+import { getAdidasSizeChartShoes, getReebokSizeChart } from '../../services/parser';
 
 class SizeChartShoes {
   private sizeNF: { [key: string]: number | string } = {
@@ -11,6 +11,14 @@ class SizeChartShoes {
     Sex: 'not found',
     cm: 0,
     in: 0
+  };
+  private sizeARNF: { [key: string]: number | string } = {
+    RU: 0,
+    EU: 0,
+    UK: 0,
+    USA: 0,
+    Sex: 'not found',
+    cm: 0
   };
 
   getSizeChartforCmFootLength(
@@ -72,14 +80,35 @@ class SizeChartShoes {
           cm: sizeResult.cm
         };
       }
-      return {
-        RU: 0,
-        EU: 0,
-        UK: 0,
-        USA: 0,
-        Sex: 'not found',
-        cm: 0
-      };
+      return this.sizeARNF;
+    } catch (error) {
+      throw new HttpError(<string>error);
+    }
+  }
+
+  async getSizeChartReebokShoes(
+    footLengthCm: number,
+    sex: string
+  ): Promise<{ [key: string]: number | string }> {
+    try {
+      const sizes: Array<{ [key: string]: number | string }> = await getReebokSizeChart('shoes');
+      let sizeResult: { [key: string]: number | string } = {};
+
+      if (sizes) {
+        for (let index = 0; index <= sizes.length - 2; index++) {
+          if (
+            footLengthCm > sizes[index].cm &&
+            footLengthCm <= sizes[index + 1].cm &&
+            sex == sizes[index + 1].Sex
+          ) {
+            sizeResult = sizes[index + 1];
+          }
+        }
+      }
+      if (sizeResult && Object.keys(sizeResult).length) {
+        return sizeResult;
+      }
+      return this.sizeARNF;
     } catch (error) {
       throw new HttpError(<string>error);
     }

@@ -14,11 +14,13 @@ server.get('/ping', async (request, reply) => {
 
 server.route(routes.getShoesSizeCm);
 server.route(routes.getShoesSizeIn);
+server.route(routes.getShoesSizeAdidas);
+server.route(routes.getShoesSizeReebok);
 server.route(routes.getClothesSizeCm);
 server.route(routes.getClothesSizeIn);
+server.route(routes.getClothesSizeReebok);
 server.route(routes.getBodyTypeCm);
 server.route(routes.getBodyTypeIn);
-server.route(routes.getShoesSizeAdidas);
 
 server.route(routes.getClothesSizeAdidas);
 

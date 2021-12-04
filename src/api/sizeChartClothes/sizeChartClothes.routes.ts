@@ -3,7 +3,8 @@ import { getClothesSizeSchema, getShoesSizeSchemaAR } from './sizeChartClothes.d
 import {
   getClothesSizeCmController,
   getClothesSizeInController,
-  getClothesSizeAdidasController
+  getClothesSizeAdidasController,
+  getClothesReebok
 } from './sizeChartClothes.controller';
 
 export const getClothesSizeCm: RouteOptions = {
@@ -25,4 +26,11 @@ export const getClothesSizeAdidas: RouteOptions = {
   url: '/api/clothes-size/cm/adidas',
   schema: getShoesSizeSchemaAR,
   handler: <RouteHandlerMethod>getClothesSizeAdidasController
+};
+
+export const getClothesSizeReebok: RouteOptions = {
+  method: 'GET',
+  url: '/api/clothes-size/cm/reebok',
+  schema: getShoesSizeSchemaAR,
+  handler: <RouteHandlerMethod>getClothesReebok
 };
