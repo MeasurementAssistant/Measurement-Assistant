@@ -4,6 +4,7 @@ import dbInitQuery from './src/db/pg/db_init';
 import * as routes from './src/api';
 
 const server = fastify();
+const d = 5;
 const dbDriver = new PostgresDriver();
 
 server.route(routes.getShoesSizeCm);
