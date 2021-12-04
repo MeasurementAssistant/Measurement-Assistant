@@ -14,14 +14,13 @@ export const getShoesSizeCmController = async (
   const { footLength, sex } = request.query;
   try {
     const result = await service.getSizeChartforCmFootLength(footLength, sex);
-    console.log(result);
     reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
   }
 };
 
-export const getShoesSizeInController = (
+export const getShoesSizeInController = async (
   request: FastifyRequest<{
     Querystring: { footLength: number; sex: string };
   }>,
@@ -29,7 +28,7 @@ export const getShoesSizeInController = (
 ) => {
   const { footLength, sex } = request.query;
   try {
-    const result = service.getSizeChartforInFootLength(footLength, sex);
+    const result = await service.getSizeChartforInFootLength(footLength, sex);
     reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });

@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import HttpError from '../../errors/httpErrors';
-import { sizeChartShoesData } from '../../data/data';
 import PostgresDriver from '../../db/pg';
-import { getSizeShoesCm } from '../../db/pg/db_queries';
+import { getSizeShoesCm, getSizeShoesIn } from '../../db/pg/db_queries';
 import { getAdidasSizeChartShoes, getReebokSizeChart } from '../../services/parser';
 import { QueryResult } from 'pg';
 
@@ -44,16 +42,18 @@ class SizeChartShoes {
     }
   }
 
-  // eslint-disable-next-line sonarjs/no-identical-functions
-  getSizeChartforInFootLength(
+  async getSizeChartforInFootLength(
     footLengthIn: number,
     sex: string
-  ): { [key: string]: number | string } {
+  ): Promise<{ [key: string]: number | string } | QueryResult> {
     try {
-      //TODO:запрос по footlength in
-      const sizeResult: { [key: string]: number | string } = sizeChartShoesData[0];
+      await this.dbDriver.connect();
+      const sizeResult: QueryResult = await this.dbDriver.executeQuery(
+        getSizeShoesIn(footLengthIn, sex)
+      );
+      await this.dbDriver.disconnect();
       if (sizeResult) {
-        return sizeResult;
+        return sizeResult.rows[0];
       }
       return this.sizeNF;
     } catch (error) {
