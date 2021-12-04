@@ -54,7 +54,7 @@ export const getShoesSizeSchemaAR: FastifySchema = {
         clothesSizes: {
           type: 'object',
           properties: {
-            RU: { type: 'number' },
+            RU: { type: ['string', 'number'] },
             EU: { type: ['string', 'number'] },
             BustCm: {
               anyOf: [
@@ -68,8 +68,30 @@ export const getShoesSizeSchemaAR: FastifySchema = {
                 }
               ]
             },
-            WaistCm: { type: 'number' },
-            HipsCm: { type: 'number' },
+            WaistCm: {
+              anyOf: [
+                { type: 'number' },
+                {
+                  type: 'object',
+                  properties: {
+                    from: { type: 'number' },
+                    to: { type: 'number' }
+                  }
+                }
+              ]
+            },
+            HipsCm: {
+              anyOf: [
+                { type: 'number' },
+                {
+                  type: 'object',
+                  properties: {
+                    from: { type: 'number' },
+                    to: { type: 'number' }
+                  }
+                }
+              ]
+            },
             Sex: { type: 'string' }
           }
         }

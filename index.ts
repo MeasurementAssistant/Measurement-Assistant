@@ -13,10 +13,9 @@ server.route(routes.getShoesSizeReebok);
 server.route(routes.getClothesSizeCm);
 server.route(routes.getClothesSizeIn);
 server.route(routes.getClothesSizeReebok);
+server.route(routes.getClothesSizeAdidas);
 server.route(routes.getBodyTypeCm);
 server.route(routes.getBodyTypeIn);
-
-// IIEF - Immediately invoked functional XPathExpression
 
 (async () => {
   await dbDriver.connect();

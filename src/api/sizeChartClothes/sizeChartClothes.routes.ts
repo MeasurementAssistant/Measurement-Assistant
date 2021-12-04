@@ -3,6 +3,7 @@ import { getClothesSizeSchema, getShoesSizeSchemaAR } from './sizeChartClothes.d
 import {
   getClothesSizeCmController,
   getClothesSizeInController,
+  getClothesSizeAdidasController,
   getClothesReebok
 } from './sizeChartClothes.controller';
 
@@ -18,6 +19,13 @@ export const getClothesSizeIn: RouteOptions = {
   url: '/api/clothes-size/in',
   schema: getClothesSizeSchema,
   handler: <RouteHandlerMethod>getClothesSizeInController
+};
+
+export const getClothesSizeAdidas: RouteOptions = {
+  method: 'GET',
+  url: '/api/clothes-size/cm/adidas',
+  schema: getShoesSizeSchemaAR,
+  handler: <RouteHandlerMethod>getClothesSizeAdidasController
 };
 
 export const getClothesSizeReebok: RouteOptions = {
