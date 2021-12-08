@@ -41,7 +41,7 @@ export default `CREATE TABLE IF NOT EXISTS roles (
     hipsIn float NOT NULL
  );
 
- CREATE TABLE IF NOT EXISTS sizeChartShoes(
+ CREATE TABLE IF NOT EXISTS size_chart_shoes(
     _id serial PRIMARY KEY,
     eu float NOT NULL,
     uk float NOT NULL,

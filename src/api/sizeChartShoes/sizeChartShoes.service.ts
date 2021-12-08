@@ -40,7 +40,6 @@ class SizeChartShoes {
         getSizeShoes(footLength, sex, unit)
       );
       await this.dbDriver.disconnect();
-      console.log(sizeResult.rows[0]);
       if (sizeResult) {
         return sizeResult.rows[0];
       }

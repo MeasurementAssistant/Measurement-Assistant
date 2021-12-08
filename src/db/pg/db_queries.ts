@@ -1,6 +1,6 @@
 export const getSizeShoes = (footLength: number, sex: string, unit: string): string => `
 select scs.uk "UK", scs.usa "USA", scs.eu "EU", scs.cm, scs.inch inch, sx.type "Sex"
-from sizechartshoes scs, sexes sx
+from size_chart_shoes scs, sexes sx
 where scs.${unit}>=${footLength}
 and sx.type='${sex}'
 and scs.sex_id=sx._id

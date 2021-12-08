@@ -16,7 +16,6 @@ export const getShoesSizeController = async (
   const { unit } = request.params;
   try {
     const result = await service.getSizeChart(footLength, sex, unit);
-    console.log(result);
     reply.code(200).send({ shoesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
