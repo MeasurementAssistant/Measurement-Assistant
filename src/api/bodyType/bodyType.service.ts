@@ -1,29 +1,15 @@
 import HttpError from '../../errors/httpErrors';
 
 class BodyType {
-  getBodyTypeforMeasurementsCm(
-    bustSizeCm: number,
-    waistSizeCm: number,
-    hipsSizeCm: number,
-    sex: string
+  getBodyTypeforMeasurements(
+    bustSize: number,
+    waistSize: number,
+    hipsSize: number,
+    sex: string,
+    unit: string
   ): { [key: string]: string } {
     try {
-      const bodyType: string = this.bodyTypeCalculator(bustSizeCm, waistSizeCm, hipsSizeCm, 'cm');
-      const description: string = this.bodyTypeDescription(bodyType, sex);
-      return { bodyType, description };
-    } catch (error) {
-      throw new HttpError(<string>error);
-    }
-  }
-
-  getBodyTypeforMeasurementsIn(
-    bustSizeIn: number,
-    waistSizeIn: number,
-    hipsSizeIn: number,
-    sex: string
-  ): { [key: string]: string } {
-    try {
-      const bodyType: string = this.bodyTypeCalculator(bustSizeIn, waistSizeIn, hipsSizeIn, 'in');
+      const bodyType: string = this.bodyTypeCalculator(bustSize, waistSize, hipsSize, unit);
       const description: string = this.bodyTypeDescription(bodyType, sex);
       return { bodyType, description };
     } catch (error) {
@@ -68,7 +54,7 @@ class BodyType {
       'There are very wide ranges of actual sizes within each shape. Also, some body shapes may not fit into any of the shapes listed below:A Shape, V Shape, X Shape, I Shape';
     if (bodyType === 'X Shape' && sex === 'female') {
       description =
-        'The X shape body has shoulders and hips relatively the same size, and a defined waist. The widest part of the body is the thighs, not the bottom, when viewed from the front.ope outwards from waist to hips.';
+        'The X shape body has shoulders and hips relatively the same size, and a defined waist. The widest part of the body is the thighs, not the bottom, when viewed from the front.';
     } else if (bodyType === 'A Shape' && sex === 'female') {
       description =
         'This is the the classic womanly shape of the A, which has the healthiest distribution of fat and the least likely to have heart disease (you lucky things!). The A shape woman has shoulders that are narrower than her hips and thighs.';

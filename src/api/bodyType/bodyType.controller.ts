@@ -5,30 +5,17 @@ import BodyType from './bodyType.service';
 
 const service = new BodyType();
 
-export const getBodyTypeResultCm = (
+export const getBodyTypeResult = (
   request: FastifyRequest<{
     Querystring: { bustSize: number; waistSize: number; hipsSize: number; sex: string };
+    Params: { unit: string };
   }>,
   reply: FastifyReply
 ) => {
   const { bustSize, waistSize, hipsSize, sex } = request.query;
+  const { unit } = request.params;
   try {
-    const result = service.getBodyTypeforMeasurementsCm(bustSize, waistSize, hipsSize, sex);
-    reply.code(200).send({ bodyTypeResult: result });
-  } catch (error: any) {
-    reply.code(500).send({ error: <HttpError>error.message });
-  }
-};
-
-export const getBodyTypeResultIn = (
-  request: FastifyRequest<{
-    Querystring: { bustSize: number; waistSize: number; hipsSize: number; sex: string };
-  }>,
-  reply: FastifyReply
-) => {
-  const { bustSize, waistSize, hipsSize, sex } = request.query;
-  try {
-    const result = service.getBodyTypeforMeasurementsIn(bustSize, waistSize, hipsSize, sex);
+    const result = service.getBodyTypeforMeasurements(bustSize, waistSize, hipsSize, sex, unit);
     reply.code(200).send({ bodyTypeResult: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });

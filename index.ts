@@ -12,8 +12,7 @@ server.route(routes.getClothesSizeCm);
 server.route(routes.getClothesSizeIn);
 server.route(routes.getClothesSizeReebok);
 server.route(routes.getClothesSizeAdidas);
-server.route(routes.getBodyTypeCm);
-server.route(routes.getBodyTypeIn);
+server.route(routes.getBodyType);
 
 (async () => {
   await dbDriver.connect();
