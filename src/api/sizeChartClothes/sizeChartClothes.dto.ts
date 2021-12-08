@@ -11,6 +11,13 @@ export const getClothesSizeSchema: FastifySchema = {
     },
     required: ['waistSize', 'hipsSize', 'bustSize', 'sex']
   },
+  params: {
+    type: 'object',
+    properties: {
+      unit: { type: 'string', enum: ['cm', 'inch'] }
+    },
+    required: ['unit']
+  },
   response: {
     200: {
       type: 'object',

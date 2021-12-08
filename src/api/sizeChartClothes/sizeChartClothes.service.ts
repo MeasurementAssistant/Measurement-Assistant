@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { QueryResult } from 'pg';
 import HttpError from '../../errors/httpErrors';
-import { sizeChartClothesData } from '../../data/data';
 import {
   getAdidasSizeChartClothesFemale,
   getAdidasSizeChartClothesMale,
   getReebokSizeChart
 } from '../../services/parser';
+import PostgresDriver from '../../db/pg';
+import { getSizeClothes } from '../../db/pg/db_queries';
 
 class SizeChartClothes {
   private sizeNF: { [key: string]: number | string } = {
@@ -29,35 +31,24 @@ class SizeChartClothes {
     HipsCm: 0,
     Sex: 'not found'
   };
+  private dbDriver = new PostgresDriver();
 
-  getSizeChartClothesforCm(
-    waistCm: number,
-    hipsCm: number,
-    bustCm: number,
-    sex: string
-  ): { [key: string]: number | string } {
+  async getSizeChartClothes(
+    waistSize: number,
+    hipsSize: number,
+    bustSize: number,
+    sex: string,
+    unit: string
+  ): Promise<{ [key: string]: number | string }> {
     try {
-      //TODO запрос
-      const sizeResult: { [key: string]: number | string } = sizeChartClothesData[0]; //
+      await this.dbDriver.connect();
+      const sizeResult: QueryResult = await this.dbDriver.executeQuery(
+        getSizeClothes(bustSize, waistSize, hipsSize, sex, unit)
+      );
+      await this.dbDriver.disconnect();
       if (sizeResult) {
-        return sizeResult;
+        return sizeResult.rows[0];
       }
-      return this.sizeNF;
-    } catch (error) {
-      throw new HttpError(<string>error);
-    }
-  }
-
-  // eslint-disable-next-line sonarjs/no-identical-functions
-  getSizeChartClothesforIn(
-    waistIn: number,
-    hipsIn: number,
-    bustIn: number,
-    sex: string
-  ): { [key: string]: number | string } {
-    try {
-      //TODO запрос
-      const sizeResult: { [key: string]: number | string } = sizeChartClothesData[0];
       if (sizeResult) {
         return sizeResult;
       }

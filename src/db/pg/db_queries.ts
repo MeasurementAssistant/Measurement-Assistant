@@ -6,6 +6,25 @@ and sx.type='${sex}'
 and scs.sex_id=sx._id
 order by scs.${unit} limit 1;`;
 
+export const getSizeClothes = (
+  bustSize: number,
+  waistSize: number,
+  hipsSize: number,
+  sex: string,
+  unit: string
+): string => `
+select scs.eu "EU", scs.uk "UK", scs.usa "USA", scs.international "International", sx.type "Sex", 
+scs.bustcm "BustCm", scs.bustinch "BustIn", 
+scs.waistcm "WaistCm", scs.waistinch "WaistIn", 
+scs.hipscm "HipsCm", scs.hipsinch "HipsIn"
+from size_chart_clothes scs, sexes sx
+where scs.bust${unit}>=${bustSize}
+and scs.waist${unit}>=${waistSize}
+and scs.hips${unit}>=${hipsSize}
+and sx.type='${sex}'
+and scs.sex_id=sx._id
+order by scs.waist${unit} limit 1;`;
+
 export const insertARShoes = (values: string, name: string): string => `
 insert into size_chart_shoes_${name}(
     ru, eu, usa, uk, sex_id, cm, inch, expired_date)

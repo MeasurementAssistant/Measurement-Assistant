@@ -24,7 +24,7 @@ export default `CREATE TABLE IF NOT EXISTS roles (
     type VARCHAR (255) UNIQUE NOT NULL
  );
  
- CREATE TABLE IF NOT EXISTS sizeChartClothes(
+ CREATE TABLE IF NOT EXISTS size_chart_clothes(
     _id serial PRIMARY KEY,
     eu float NOT NULL,
     uk float NOT NULL,
@@ -34,11 +34,11 @@ export default `CREATE TABLE IF NOT EXISTS roles (
      REFERENCES sexes (_id),
     international VARCHAR (255) NOT NULL,
     bustCm float NOT NULL,
-    bustIn float NOT NULL,
+    bustInch float NOT NULL,
     waistCm float NOT NULL,
-    waistIn float NOT NULL,
+    waistInch float NOT NULL,
     hipsCm float NOT NULL,
-    hipsIn float NOT NULL
+    hipsInch float NOT NULL
  );
 
  CREATE TABLE IF NOT EXISTS size_chart_shoes(
