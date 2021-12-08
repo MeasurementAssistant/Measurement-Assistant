@@ -41,7 +41,6 @@ export default `CREATE TABLE IF NOT EXISTS roles (
     hipsIn float NOT NULL
  );
 
- 
  CREATE TABLE IF NOT EXISTS sizeChartShoes(
     _id serial PRIMARY KEY,
     eu float NOT NULL,
@@ -52,4 +51,19 @@ export default `CREATE TABLE IF NOT EXISTS roles (
     REFERENCES sexes (_id),
     cm float NOT NULL,
     inch float NOT NULL
- );`;
+ );
+
+ CREATE TABLE IF NOT EXISTS size_chart_shoes_reebok(
+   _id serial PRIMARY KEY,
+   eu float NOT NULL,
+   uk float NOT NULL,
+   usa float NOT NULL,
+   ru float NOT NULL,
+   sex_id INT,
+   FOREIGN KEY (sex_id)
+   REFERENCES sexes (_id),
+   cm float NOT NULL,
+   inch float NOT NULL,
+   created_date date DEFAULT now(),
+   expired_date date NOT NULL
+ )`;

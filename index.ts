@@ -6,8 +6,7 @@ import * as routes from './src/api';
 const server = fastify();
 const dbDriver = new PostgresDriver();
 
-server.route(routes.getShoesSizeCm);
-server.route(routes.getShoesSizeIn);
+server.route(routes.getShoesSize);
 server.route(routes.getShoesSizeAdidas);
 server.route(routes.getShoesSizeReebok);
 server.route(routes.getClothesSizeCm);

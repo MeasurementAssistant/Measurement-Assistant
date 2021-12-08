@@ -1,6 +1,12 @@
 import HttpError from '../../errors/httpErrors';
 import PostgresDriver from '../../db/pg';
-import { getSizeShoesCm, getSizeShoesIn } from '../../db/pg/db_queries';
+import {
+  getSizeShoes,
+  getExpiredDate,
+  getSizeShoesAR,
+  insertARShoes,
+  deleteDataFromTableAR
+} from '../../db/pg/db_queries';
 import { getAdidasSizeChartShoes, getReebokSizeChart } from '../../services/parser';
 import { QueryResult } from 'pg';
 
@@ -23,35 +29,18 @@ class SizeChartShoes {
   };
   private dbDriver = new PostgresDriver();
 
-  async getSizeChartforCmFootLength(
-    footLengthCm: number,
-    sex: string
+  async getSizeChart(
+    footLength: number,
+    sex: string,
+    unit: string
   ): Promise<{ [key: string]: number | string } | QueryResult> {
     try {
       await this.dbDriver.connect();
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(
-        getSizeShoesCm(footLengthCm, sex)
+        getSizeShoes(footLength, sex, unit)
       );
       await this.dbDriver.disconnect();
-      if (sizeResult) {
-        return sizeResult.rows[0];
-      }
-      return this.sizeNF;
-    } catch (error) {
-      throw new HttpError(<string>error);
-    }
-  }
-
-  async getSizeChartforInFootLength(
-    footLengthIn: number,
-    sex: string
-  ): Promise<{ [key: string]: number | string } | QueryResult> {
-    try {
-      await this.dbDriver.connect();
-      const sizeResult: QueryResult = await this.dbDriver.executeQuery(
-        getSizeShoesIn(footLengthIn, sex)
-      );
-      await this.dbDriver.disconnect();
+      console.log(sizeResult.rows[0]);
       if (sizeResult) {
         return sizeResult.rows[0];
       }
@@ -94,30 +83,25 @@ class SizeChartShoes {
   }
 
   async getSizeChartReebokShoes(
-    footLengthCm: number,
-    sex: string
+    footLength: number,
+    sex: string,
+    unit: string
   ): Promise<{ [key: string]: number | string }> {
     try {
-      const sizes: Array<{ [key: string]: number | string }> = await getReebokSizeChart('shoes');
-      let sizeResult: { [key: string]: number | string } = {};
-      sizes.unshift(
-        { RU: 0, EU: 0, UK: 0, USA: 0, Sex: 'female', cm: 0 },
-        { RU: 0, EU: 0, UK: 0, USA: 0, Sex: 'male', cm: 0 }
-      );
-      if (sizes) {
-        for (let index = 0; index <= sizes.length - 1; index++) {
-          if (
-            footLengthCm > sizes[index].cm &&
-            footLengthCm <= sizes[index + 1].cm &&
-            sex == sizes[index + 1].Sex &&
-            sex == sizes[index].Sex
-          ) {
-            sizeResult = sizes[index + 1];
-          }
-        }
+      const now = new Date();
+      await this.dbDriver.connect();
+      const expiredDate: QueryResult = await this.dbDriver.executeQuery(getExpiredDate('reebok'));
+      if (now > expiredDate.rows[0] || !expiredDate.rows[0]) {
+        await this.dbDriver.executeQuery(deleteDataFromTableAR('reebok'));
+        const insertValues = await getReebokSizeChart('shoes');
+        await this.dbDriver.executeQuery(insertARShoes(insertValues, 'reebok'));
       }
-      if (sizeResult && Object.keys(sizeResult).length) {
-        return sizeResult;
+      const sizeResult: QueryResult = await this.dbDriver.executeQuery(
+        getSizeShoesAR(footLength, sex, unit, 'reebok')
+      );
+      await this.dbDriver.disconnect();
+      if (sizeResult) {
+        return sizeResult.rows[0];
       }
       return this.sizeARNF;
     } catch (error) {

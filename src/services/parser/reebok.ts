@@ -3,10 +3,8 @@ import cheerio, { CheerioAPI } from 'cheerio';
 
 const url = 'https://www.reebok.ru/help-topics-size_charts.html';
 
-export const getReebokSizeChart = async (
-  type: string
-): Promise<Array<{ [key: string]: number | string }>> => {
-  let result: Array<{ [key: string]: number | string }> = [];
+export const getReebokSizeChart = async (type: string): Promise<string> => {
+  let result = '';
   await axios
     .get(url)
     .then((response) => {
@@ -18,17 +16,19 @@ export const getReebokSizeChart = async (
   return result;
 };
 
-const getData = (html: string, type: string) => {
+const getData = (html: string, type: string): string => {
   const result: Array<{ [key: string]: string | number }> = [];
   const $ = cheerio.load(html);
+  let insert1,
+    insert2 = '';
   if (type == 'shoes') {
-    convertShoesToResult(result, $, 'm');
-    convertShoesToResult(result, $, 'w');
+    insert1 = convertShoesToResult(result, $, 'm');
+    insert2 = convertShoesToResult(result, $, 'w');
   } else {
-    convertClothesToResult(result, $, 'm');
-    convertClothesToResult(result, $, 'w');
+    insert1 = convertClothesToResult(result, $, 'm');
+    insert2 = convertClothesToResult(result, $, 'w');
   }
-  return result;
+  return `${insert1},${insert2}`;
 };
 
 const convertShoesToResult = (
@@ -49,10 +49,21 @@ const convertShoesToResult = (
       EU: Number(data[i + 1]),
       USA: Number(data[i + 3]),
       UK: Number(data[i + 4]),
-      Sex: letter == 'm' ? 'male' : 'female',
-      cm: Number(data[i + 2].split(' cm')[0])
+      sex_id: letter == 'm' ? 2 : 1,
+      cm: Number(data[i + 2].split(' cm')[0]),
+      inch: (Number(data[i + 2].split(' cm')[0]) / 2.54).toFixed(2)
     });
   }
+  const now = new Date();
+  now.setDate(now.getDate() + 3);
+  return result
+    .map(
+      (el) =>
+        `(${el.RU},${el.EU},${el.USA},${el.UK},${el.sex_id},${el.cm}, ${
+          el.inch
+        },'${now.toISOString()}')`
+    )
+    .join(',');
 };
 
 const convertClothesToResult = (
@@ -72,9 +83,22 @@ const convertClothesToResult = (
       RU: Number(data[i + 4]),
       EU: data[i],
       BustCm: Number(data[i + 1]),
+      BustIn: (Number(data[i + 1]) / 2.54).toFixed(2),
       WaistCm: Number(data[i + 2]),
+      WaistIn: (Number(data[i + 2]) / 2.54).toFixed(2),
       HipsCm: Number(data[i + 3]),
-      Sex: letter == 'm' ? 'male' : 'female'
+      HipsIn: (Number(data[i + 3]) / 2.54).toFixed(2),
+      sex_id: letter == 'm' ? 2 : 1
     });
   }
+  const now = new Date();
+  now.setDate(now.getDate() + 3);
+  return result
+    .map(
+      (el) =>
+        `(${el.RU},${el.EU},${el.BustCm},${el.BustIn},${el.WaistCm},${el.WaistIn},${el.HipsCm},${
+          el.HipsIn
+        },${el.sex_id},${now.toISOString()})`
+    )
+    .join(',');
 };
