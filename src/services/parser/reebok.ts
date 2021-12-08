@@ -49,7 +49,7 @@ const convertShoesToResult = (
       EU: Number(data[i + 1]),
       USA: Number(data[i + 3]),
       UK: Number(data[i + 4]),
-      sex_id: letter == 'm' ? 2 : 1,
+      sexId: letter == 'm' ? 2 : 1,
       cm: Number(data[i + 2].split(' cm')[0]),
       inch: (Number(data[i + 2].split(' cm')[0]) / 2.54).toFixed(2)
     });
@@ -59,7 +59,7 @@ const convertShoesToResult = (
   return result
     .map(
       (el) =>
-        `(${el.RU},${el.EU},${el.USA},${el.UK},${el.sex_id},${el.cm}, ${
+        `(${el.RU},${el.EU},${el.USA},${el.UK},${el.sexId},${el.cm}, ${
           el.inch
         },'${now.toISOString()}')`
     )
@@ -88,7 +88,7 @@ const convertClothesToResult = (
       WaistIn: (Number(data[i + 2]) / 2.54).toFixed(2),
       HipsCm: Number(data[i + 3]),
       HipsIn: (Number(data[i + 3]) / 2.54).toFixed(2),
-      sex_id: letter == 'm' ? 2 : 1
+      sexId: letter == 'm' ? 2 : 1
     });
   }
   const now = new Date();
@@ -98,7 +98,7 @@ const convertClothesToResult = (
       (el) =>
         `(${el.RU},${el.EU},${el.BustCm},${el.BustIn},${el.WaistCm},${el.WaistIn},${el.HipsCm},${
           el.HipsIn
-        },${el.sex_id},${now.toISOString()})`
+        },${el.sexId},${now.toISOString()})`
     )
     .join(',');
 };

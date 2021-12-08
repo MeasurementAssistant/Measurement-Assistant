@@ -3,10 +3,8 @@ import cheerio from 'cheerio';
 
 const url = 'https://www.adidas.ru/help-topics-size_charts.html';
 
-export const getAdidasSizeChartShoes = async (): Promise<
-  Array<{ [key: string]: string | number }>
-> => {
-  let resultShoes: Array<{ [key: string]: string | number }> = [];
+export const getAdidasSizeChartShoes = async (): Promise<string> => {
+  let resultShoes = '';
   await axios
     .get(url)
     .then((response) => {
@@ -16,6 +14,48 @@ export const getAdidasSizeChartShoes = async (): Promise<
       console.log(error);
     });
   return resultShoes;
+};
+
+const getShoesData = (html: string) => {
+  const result: Array<{ [key: string]: string | number }> = [];
+  const data: Array<string> = [];
+  const $ = cheerio.load(html);
+  $(
+    'div#tabs-4 div#content-asset-size-chart-size-shoes div.contentasset div.size_chart.shoes div.size_chart_content div.size_chart_table table tbody tr:not(:first-of-type) td'
+  ).each((i, elem) => {
+    data.push($(elem).text());
+  });
+  for (let i = 0; i < data.length; i += 6) {
+    result.push(
+      {
+        RU: Number(data[i].split('RU')[0]),
+        EU: data[i + 1],
+        USA: data[i + 3] == '-' ? 0 : Number(data[i + 3]),
+        sexId: 1,
+        UK: Number(data[i + 4]),
+        cm: Number(data[i + 5].split('см')[0]),
+        inch: (Number(data[i + 5].split('см')[0]) / 2.54).toFixed(2)
+      },
+      {
+        RU: Number(data[i].split('RU')[0]),
+        EU: data[i + 1],
+        USA: Number(data[i + 2]),
+        sexId: 2,
+        UK: Number(data[i + 4]),
+        cm: Number(data[i + 5].split('см')[0]),
+        inch: (Number(data[i + 5].split('см')[0]) / 2.54).toFixed(2)
+      }
+    );
+  }
+  const now = new Date();
+  now.setDate(now.getDate() + 3);
+  return result
+    .map(
+      (el) =>
+        `(${el.RU},'${el.EU}',${el.USA},${el.UK},${el.sexId},${el.cm}, 
+          ${el.inch},'${now.toISOString()}')`
+    )
+    .join(',');
 };
 
 export const getAdidasSizeChartClothesMale = async (): Promise<
@@ -48,29 +88,6 @@ export const getAdidasSizeChartClothesFemale = async (): Promise<
   return resultClothes;
 };
 
-const getShoesData = (html: string) => {
-  const result: Array<{ [key: string]: string | number }> = [];
-  const data: Array<string> = [];
-  const $ = cheerio.load(html);
-
-  $(
-    'div#tabs-4 div#content-asset-size-chart-size-shoes div.contentasset div.size_chart.shoes div.size_chart_content div.size_chart_table table tbody tr:not(:first-of-type) td'
-  ).each((i, elem) => {
-    data.push($(elem).text());
-  });
-
-  for (let i = 0; i < data.length; i += 6) {
-    result.push({
-      RU: Number(data[i].split('RU')[0]),
-      EU: data[i + 1],
-      USmale: Number(data[i + 2]),
-      USfemale: data[i + 3] == '-' ? 0 : Number(data[i + 3]),
-      UK: Number(data[i + 4]),
-      cm: Number(data[i + 5].split('см')[0])
-    });
-  }
-  return result;
-};
 const getClothesDataMale = (html: string) => {
   const result: Array<{ [key: string]: { [key: string]: number | string } }> = [];
   const data: Array<string> = [];

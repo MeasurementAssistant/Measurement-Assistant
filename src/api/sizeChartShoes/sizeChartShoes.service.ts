@@ -49,55 +49,24 @@ class SizeChartShoes {
       throw new HttpError(<string>error);
     }
   }
-
-  async getSizeChartAdidasShoes(
-    footLengthCm: number,
-    sex: string
-  ): Promise<{ [key: string]: number | string | { [key: string]: number } }> {
-    try {
-      const sizes: Array<{ [key: string]: number | string | { [key: string]: number } }> =
-        await getAdidasSizeChartShoes();
-      let sizeResult: { [key: string]: number | string | { [key: string]: number } } = {};
-      sizes.unshift({ RU: 0, EU: 0, UK: 0, USmale: 0, USfemale: 0, cm: 0 });
-      if (sizes) {
-        for (let index = 0; index <= sizes.length - 2; index++) {
-          if (footLengthCm > sizes[index].cm && footLengthCm <= sizes[index + 1].cm) {
-            sizeResult = sizes[index + 1];
-          }
-        }
-      }
-      if (sizeResult && Object.keys(sizeResult).length) {
-        return {
-          RU: sizeResult.RU,
-          EU: sizeResult.EU,
-          UK: sizeResult.UK,
-          USA: sex == 'male' ? sizeResult.USmale : sizeResult.USfemale,
-          Sex: sex,
-          cm: sizeResult.cm
-        };
-      }
-      return this.sizeARNF;
-    } catch (error) {
-      throw new HttpError(<string>error);
-    }
-  }
-
-  async getSizeChartReebokShoes(
+  async getSizeChartARShoes(
     footLength: number,
     sex: string,
-    unit: string
+    unit: string,
+    brand: string
   ): Promise<{ [key: string]: number | string }> {
     try {
       const now = new Date();
       await this.dbDriver.connect();
-      const expiredDate: QueryResult = await this.dbDriver.executeQuery(getExpiredDate('reebok'));
+      const expiredDate: QueryResult = await this.dbDriver.executeQuery(getExpiredDate(brand));
       if (now > expiredDate.rows[0] || !expiredDate.rows[0]) {
-        await this.dbDriver.executeQuery(deleteDataFromTableAR('reebok'));
-        const insertValues = await getReebokSizeChart('shoes');
-        await this.dbDriver.executeQuery(insertARShoes(insertValues, 'reebok'));
+        await this.dbDriver.executeQuery(deleteDataFromTableAR(brand));
+        const insertValues =
+          brand == 'reebok' ? await getReebokSizeChart('shoes') : await getAdidasSizeChartShoes();
+        await this.dbDriver.executeQuery(insertARShoes(insertValues, brand));
       }
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(
-        getSizeShoesAR(footLength, sex, unit, 'reebok')
+        getSizeShoesAR(footLength, sex, unit, brand)
       );
       await this.dbDriver.disconnect();
       if (sizeResult) {

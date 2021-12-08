@@ -7,8 +7,7 @@ const server = fastify();
 const dbDriver = new PostgresDriver();
 
 server.route(routes.getShoesSize);
-server.route(routes.getShoesSizeAdidas);
-server.route(routes.getShoesSizeReebok);
+server.route(routes.getShoesBrandSize);
 server.route(routes.getClothesSizeCm);
 server.route(routes.getClothesSizeIn);
 server.route(routes.getClothesSizeReebok);

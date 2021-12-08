@@ -5,10 +5,16 @@ export const getShoesSizeSchema: FastifySchema = {
     type: 'object',
     properties: {
       footLength: { type: 'number' },
-      sex: { type: 'string', enum: ['female', 'male'] },
-      unit: { type: 'string', enum: ['cm', 'inch'] }
+      sex: { type: 'string', enum: ['female', 'male'] }
     },
     required: ['footLength', 'sex']
+  },
+  params: {
+    type: 'object',
+    properties: {
+      unit: { type: 'string', enum: ['cm', 'inch'] }
+    },
+    required: ['unit']
   },
   response: {
     200: {
@@ -35,10 +41,17 @@ export const getShoesSizeSchemaAR: FastifySchema = {
     type: 'object',
     properties: {
       footLength: { type: 'number' },
-      sex: { type: 'string', enum: ['female', 'male'] },
-      unit: { type: 'string', enum: ['cm', 'inch'] }
+      sex: { type: 'string', enum: ['female', 'male'] }
     },
     required: ['footLength', 'sex']
+  },
+  params: {
+    type: 'object',
+    properties: {
+      unit: { type: 'string', enum: ['cm', 'inch'] },
+      brand: { type: 'string', enum: ['adidas', 'reebok'] }
+    },
+    required: ['unit', 'brand']
   },
   response: {
     200: {

@@ -7,11 +7,13 @@ const service = new SizeChartShoes();
 
 export const getShoesSizeController = async (
   request: FastifyRequest<{
-    Querystring: { footLength: number; sex: string; unit: string };
+    Querystring: { footLength: number; sex: string };
+    Params: { unit: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { footLength, sex, unit } = request.query;
+  const { footLength, sex } = request.query;
+  const { unit } = request.params;
   try {
     const result = await service.getSizeChart(footLength, sex, unit);
     console.log(result);
@@ -21,30 +23,17 @@ export const getShoesSizeController = async (
   }
 };
 
-export const getShoesSizeAdidasController = async (
+export const getShoesSizeBrandController = async (
   request: FastifyRequest<{
     Querystring: { footLength: number; sex: string };
+    Params: { unit: string; brand: string };
   }>,
   reply: FastifyReply
 ) => {
   const { footLength, sex } = request.query;
+  const { unit, brand } = request.params;
   try {
-    const result = await service.getSizeChartAdidasShoes(footLength, sex);
-    reply.code(200).send({ shoesSize: result });
-  } catch (error: any) {
-    reply.code(500).send({ error: <HttpError>error.message });
-  }
-};
-
-export const getShoesSizeReebokController = async (
-  request: FastifyRequest<{
-    Querystring: { footLength: number; sex: string; unit: string };
-  }>,
-  reply: FastifyReply
-) => {
-  const { footLength, sex, unit } = request.query;
-  try {
-    const result = await service.getSizeChartReebokShoes(footLength, sex, unit);
+    const result = await service.getSizeChartARShoes(footLength, sex, unit, brand);
     reply.code(200).send({ shoesSize: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
