@@ -31,11 +31,11 @@ export const getClothesSizeSchema: FastifySchema = {
             Sex: { type: 'string' },
             International: { type: 'number' },
             BustCm: { type: 'number' },
-            BustIn: { type: 'number' },
+            BustInch: { type: 'number' },
             WaistCm: { type: 'number' },
-            WaistIn: { type: 'number' },
+            WaistInch: { type: 'number' },
             HipsCm: { type: 'number' },
-            HipsIn: { type: 'number' }
+            HipsInch: { type: 'number' }
           }
         }
       }
@@ -54,6 +54,13 @@ export const getShoesSizeSchemaAR: FastifySchema = {
     },
     required: ['waistSize', 'hipsSize', 'bustSize', 'sex']
   },
+  params: {
+    type: 'object',
+    properties: {
+      unit: { type: 'string', enum: ['cm', 'inch'] }
+    },
+    required: ['unit']
+  },
   response: {
     200: {
       type: 'object',
@@ -64,6 +71,18 @@ export const getShoesSizeSchemaAR: FastifySchema = {
             RU: { type: ['string', 'number'] },
             EU: { type: ['string', 'number'] },
             BustCm: {
+              anyOf: [
+                { type: 'number' },
+                {
+                  type: 'object',
+                  properties: {
+                    from: { type: 'number' },
+                    to: { type: 'number' }
+                  }
+                }
+              ]
+            },
+            BustInch: {
               anyOf: [
                 { type: 'number' },
                 {
@@ -87,7 +106,31 @@ export const getShoesSizeSchemaAR: FastifySchema = {
                 }
               ]
             },
+            WaistInch: {
+              anyOf: [
+                { type: 'number' },
+                {
+                  type: 'object',
+                  properties: {
+                    from: { type: 'number' },
+                    to: { type: 'number' }
+                  }
+                }
+              ]
+            },
             HipsCm: {
+              anyOf: [
+                { type: 'number' },
+                {
+                  type: 'object',
+                  properties: {
+                    from: { type: 'number' },
+                    to: { type: 'number' }
+                  }
+                }
+              ]
+            },
+            HipsInch: {
               anyOf: [
                 { type: 'number' },
                 {

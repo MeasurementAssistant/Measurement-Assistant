@@ -96,9 +96,9 @@ const convertClothesToResult = (
   return result
     .map(
       (el) =>
-        `(${el.RU},${el.EU},${el.BustCm},${el.BustIn},${el.WaistCm},${el.WaistIn},${el.HipsCm},${
+        `(${el.RU},'${el.EU}',${el.BustCm},${el.BustIn},${el.WaistCm},${el.WaistIn},${el.HipsCm},${
           el.HipsIn
-        },${el.sexId},${now.toISOString()})`
+        },${el.sexId},'${now.toISOString()}')`
     )
     .join(',');
 };

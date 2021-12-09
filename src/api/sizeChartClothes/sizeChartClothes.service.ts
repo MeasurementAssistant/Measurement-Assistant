@@ -7,7 +7,13 @@ import {
   getReebokSizeChart
 } from '../../services/parser';
 import PostgresDriver from '../../db/pg';
-import { getSizeClothes } from '../../db/pg/db_queries';
+import {
+  getSizeClothes,
+  getClothesExpiredDate,
+  deleteDataFromClothesTableAR,
+  insertReebokClothes,
+  getSizeClothesReebok
+} from '../../db/pg/db_queries';
 
 class SizeChartClothes {
   private sizeNF: { [key: string]: number | string } = {
@@ -46,11 +52,8 @@ class SizeChartClothes {
         getSizeClothes(bustSize, waistSize, hipsSize, sex, unit)
       );
       await this.dbDriver.disconnect();
-      if (sizeResult) {
+      if (sizeResult && sizeResult.rows[0]) {
         return sizeResult.rows[0];
-      }
-      if (sizeResult) {
-        return sizeResult;
       }
       return this.sizeNF;
     } catch (error) {
@@ -59,34 +62,31 @@ class SizeChartClothes {
   }
 
   async getSizeChartReebokClothes(
-    waistCm: number,
-    hipsCm: number,
-    bustCm: number,
-    sex: string
+    waistSize: number,
+    hipsSize: number,
+    bustSize: number,
+    sex: string,
+    unit: string,
+    brand: string
   ): Promise<{ [key: string]: number | string }> {
     try {
-      // const sizes: Array<{ [key: string]: number | string }> = await getReebokSizeChart('clothes');
-      // let sizeResult: { [key: string]: number | string } = {};
-      // sizes.unshift({ RU: 0, EU: 0, BustCm: 0, WaistCm: 0, HipsCm: 0, Sex: 'female' });
-      // sizes.unshift({ RU: 0, EU: 0, BustCm: 0, WaistCm: 0, HipsCm: 0, Sex: 'male' });
-      // if (sizes) {
-      //   for (let index = 0; index <= sizes.length - 2; index++) {
-      //     if (
-      //       sizes[index].Sex == sex &&
-      //       bustCm > sizes[index].BustCm &&
-      //       bustCm <= sizes[index + 1].BustCm &&
-      //       waistCm > sizes[index].WaistCm &&
-      //       waistCm <= sizes[index + 1].WaistCm &&
-      //       hipsCm > sizes[index].HipsCm &&
-      //       hipsCm <= sizes[index + 1].HipsCm
-      //     ) {
-      //       sizeResult = sizes[index + 1];
-      //     }
-      //   }
-      // }
-      // if (sizeResult && Object.keys(sizeResult).length) {
-      //   return sizeResult;
-      // }
+      const now = new Date();
+      await this.dbDriver.connect();
+      const expiredDate: QueryResult = await this.dbDriver.executeQuery(
+        getClothesExpiredDate(brand)
+      );
+      if (now > expiredDate.rows[0] || !expiredDate.rows[0]) {
+        await this.dbDriver.executeQuery(deleteDataFromClothesTableAR(brand));
+        const insertValues = brand == 'reebok' ? await getReebokSizeChart('clothes') : '';
+        await this.dbDriver.executeQuery(insertReebokClothes(insertValues));
+      }
+      const sizeResult: QueryResult = await this.dbDriver.executeQuery(
+        getSizeClothesReebok(bustSize, waistSize, hipsSize, sex, unit)
+      );
+      await this.dbDriver.disconnect();
+      if (sizeResult && sizeResult.rows[0]) {
+        return sizeResult.rows[0];
+      }
       return this.sizeARNF;
     } catch (error) {
       throw new HttpError(<string>error);

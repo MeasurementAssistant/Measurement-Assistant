@@ -22,15 +22,24 @@ export const getClothesSizeController = async (
   }
 };
 
-export const getClothesReebok = async (
+export const getClothesBrandController = async (
   request: FastifyRequest<{
     Querystring: { waistSize: number; hipsSize: number; bustSize: number; sex: string };
+    Params: { unit: string; brand: string };
   }>,
   reply: FastifyReply
 ) => {
   const { waistSize, hipsSize, bustSize, sex } = request.query;
+  const { unit, brand } = request.params;
   try {
-    const result = await service.getSizeChartReebokClothes(waistSize, hipsSize, bustSize, sex);
+    const result = await service.getSizeChartReebokClothes(
+      waistSize,
+      hipsSize,
+      bustSize,
+      sex,
+      unit,
+      brand
+    );
     reply.code(200).send({ clothesSizes: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
