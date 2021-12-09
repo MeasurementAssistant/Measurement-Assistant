@@ -33,7 +33,7 @@ class SizeChartShoes {
     footLength: number,
     sex: string,
     unit: string
-  ): Promise<{ [key: string]: number | string } | QueryResult> {
+  ): Promise<{ [key: string]: number | string }> {
     try {
       await this.dbDriver.connect();
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(

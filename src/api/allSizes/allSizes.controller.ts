@@ -5,24 +5,31 @@ import AllSizes from './allSizes.service';
 
 const service = new AllSizes();
 
-export const getAllSizesResult = (
+export const getAllSizesResult = async (
   request: FastifyRequest<{
     Querystring: {
       bustSize: number;
       waistSize: number;
       hipsSize: number;
-      footLength: string;
+      footLength: number;
       sex: string;
     };
-    Params: { fileType: string };
+    Params: { fileType: string; unit: string };
   }>,
   reply: FastifyReply
 ) => {
   const { bustSize, waistSize, hipsSize, footLength, sex } = request.query;
-  const { fileType } = request.params;
+  const { fileType, unit } = request.params;
   try {
-    const result = fileType == 'pdf' ? service.generatePDF() : service.generateExcel();
-    reply.code(200).send({ bodyTypeResult: result });
+    const result =
+      fileType == 'pdf'
+        ? service.generatePDF()
+        : await service.generateXLSXfile(bustSize, waistSize, hipsSize, footLength, sex, unit);
+    reply.headers({
+      'Content-Disposition': 'attachment; filename="AllSizes.xlsx"',
+      'Content-Type': 'application/xlsx'
+    });
+    reply.code(200).send(result);
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });
   }

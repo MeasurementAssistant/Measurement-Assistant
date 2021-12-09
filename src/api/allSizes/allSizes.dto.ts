@@ -10,20 +10,21 @@ export const getAllSizesSchema: FastifySchema = {
       footLength: { type: 'number' },
       sex: { type: 'string', enum: ['female', 'male'] }
     },
-    required: ['bustSize', 'waistSize', 'hipsSize', 'sex', 'footLength']
+    required: ['footLength', 'sex']
   },
   params: {
     type: 'object',
     properties: {
-      fileType: { type: 'string', enum: ['excel', 'pdf'] }
+      unit: { type: 'string', enum: ['cm', 'inch'] },
+      fileType: { type: 'string', enum: ['xlsx', 'pdf'] }
     },
-    required: ['fileType']
+    required: ['unit', 'fileType']
   },
   response: {
     200: {
       type: 'object',
       properties: {
-        bodyTypeResult: {
+        result: {
           type: 'object',
           properties: {
             message: { type: 'string' }
