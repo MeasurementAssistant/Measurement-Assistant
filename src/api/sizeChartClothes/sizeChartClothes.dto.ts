@@ -57,9 +57,10 @@ export const getShoesSizeSchemaAR: FastifySchema = {
   params: {
     type: 'object',
     properties: {
-      unit: { type: 'string', enum: ['cm', 'inch'] }
+      unit: { type: 'string', enum: ['cm', 'inch'] },
+      brand: { type: 'string', enum: ['reebok', 'adidas'] }
     },
-    required: ['unit']
+    required: ['unit', 'brand']
   },
   response: {
     200: {
