@@ -9,8 +9,7 @@ const dbDriver = new PostgresDriver();
 server.route(routes.getShoesSize);
 server.route(routes.getShoesBrandSize);
 server.route(routes.getClothesSize);
-server.route(routes.getClothesSizeReebok);
-server.route(routes.getClothesSizeAdidas);
+server.route(routes.getClothesSizeBrand);
 server.route(routes.getBodyType);
 
 (async () => {

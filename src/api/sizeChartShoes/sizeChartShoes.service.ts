@@ -1,14 +1,14 @@
+import { QueryResult } from 'pg';
 import HttpError from '../../errors/httpErrors';
 import PostgresDriver from '../../db/pg';
 import {
   getSizeShoes,
-  getExpiredDate,
+  getShoesExpiredDate,
   getSizeShoesAR,
   insertARShoes,
-  deleteDataFromTableAR
+  deleteDataFromShoesTableAR
 } from '../../db/pg/db_queries';
 import { getAdidasSizeChartShoes, getReebokSizeChart } from '../../services/parser';
-import { QueryResult } from 'pg';
 
 class SizeChartShoes {
   private sizeNF: { [key: string]: number | string } = {
@@ -40,7 +40,7 @@ class SizeChartShoes {
         getSizeShoes(footLength, sex, unit)
       );
       await this.dbDriver.disconnect();
-      if (sizeResult) {
+      if (sizeResult && sizeResult.rows[0]) {
         return sizeResult.rows[0];
       }
       return this.sizeNF;
@@ -57,9 +57,9 @@ class SizeChartShoes {
     try {
       const now = new Date();
       await this.dbDriver.connect();
-      const expiredDate: QueryResult = await this.dbDriver.executeQuery(getExpiredDate(brand));
+      const expiredDate: QueryResult = await this.dbDriver.executeQuery(getShoesExpiredDate(brand));
       if (now > expiredDate.rows[0] || !expiredDate.rows[0]) {
-        await this.dbDriver.executeQuery(deleteDataFromTableAR(brand));
+        await this.dbDriver.executeQuery(deleteDataFromShoesTableAR(brand));
         const insertValues =
           brand == 'reebok' ? await getReebokSizeChart('shoes') : await getAdidasSizeChartShoes();
         await this.dbDriver.executeQuery(insertARShoes(insertValues, brand));
@@ -68,7 +68,7 @@ class SizeChartShoes {
         getSizeShoesAR(footLength, sex, unit, brand)
       );
       await this.dbDriver.disconnect();
-      if (sizeResult) {
+      if (sizeResult && sizeResult.rows[0]) {
         return sizeResult.rows[0];
       }
       return this.sizeARNF;
