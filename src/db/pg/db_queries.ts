@@ -30,8 +30,8 @@ insert into size_chart_shoes_${name}(
     ru, eu, usa, uk, sex_id, cm, inch, expired_date)
 values ${values};`;
 
-export const insertReebokClothes = (values: string): string => `
-insert into size_chart_clothes_reebok(
+export const insertARClothes = (values: string, name: string): string => `
+insert into size_chart_clothes_${name}(
   ru, eu, bustcm, bustinch, waistcm, waistinch,
   hipscm, hipsinch, sex_id, expired_date)
 values ${values};`;
@@ -49,19 +49,20 @@ and sx.type='${sex}'
 and scs.sex_id=sx._id
 order by scs.${unit} limit 1;`;
 
-export const getSizeClothesReebok = (
+export const getSizeClothesAR = (
   bustSize: number,
   waistSize: number,
   hipsSize: number,
   sex: string,
-  unit: string
+  unit: string,
+  name: string
 ): string => `
 select scs.ru "RU", scs.eu "EU",
 scs.bustcm "BustCm", scs.bustinch "BustInch", 
 scs.waistcm "WaistCm", scs.waistinch "WaistInch", 
 scs.hipscm "HipsCm", scs.hipsinch "HipsInch",
 sx.type "Sex"
-from size_chart_clothes_reebok scs, sexes sx
+from size_chart_clothes_${name} scs, sexes sx
 where scs.bust${unit}>=${bustSize}
 and scs.waist${unit}>=${waistSize}
 and scs.hips${unit}>=${hipsSize}

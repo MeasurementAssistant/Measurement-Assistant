@@ -98,4 +98,22 @@ export default `CREATE TABLE IF NOT EXISTS roles (
    REFERENCES sexes (_id),
    created_date date DEFAULT now(),
    expired_date date NOT NULL
- );`;
+ );
+ 
+ CREATE TABLE IF NOT EXISTS size_chart_clothes_adidas(
+   _id serial PRIMARY KEY,
+   ru float NOT NULL,
+   eu VARCHAR (255) NOT NULL,
+   bustcm float NOT NULL,
+   bustinch float NOT NULL,
+   waistcm float NOT NULL,
+   waistinch float NOT NULL,
+   hipscm float NOT NULL,
+   hipsinch float NOT NULL,
+   sex_id INT,
+   FOREIGN KEY (sex_id)
+   REFERENCES sexes (_id),
+   created_date date DEFAULT now(),
+   expired_date date NOT NULL
+ );
+ `;

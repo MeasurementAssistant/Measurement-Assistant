@@ -70,78 +70,12 @@ export const getShoesSizeSchemaAR: FastifySchema = {
           properties: {
             RU: { type: ['string', 'number'] },
             EU: { type: ['string', 'number'] },
-            BustCm: {
-              anyOf: [
-                { type: 'number' },
-                {
-                  type: 'object',
-                  properties: {
-                    from: { type: 'number' },
-                    to: { type: 'number' }
-                  }
-                }
-              ]
-            },
-            BustInch: {
-              anyOf: [
-                { type: 'number' },
-                {
-                  type: 'object',
-                  properties: {
-                    from: { type: 'number' },
-                    to: { type: 'number' }
-                  }
-                }
-              ]
-            },
-            WaistCm: {
-              anyOf: [
-                { type: 'number' },
-                {
-                  type: 'object',
-                  properties: {
-                    from: { type: 'number' },
-                    to: { type: 'number' }
-                  }
-                }
-              ]
-            },
-            WaistInch: {
-              anyOf: [
-                { type: 'number' },
-                {
-                  type: 'object',
-                  properties: {
-                    from: { type: 'number' },
-                    to: { type: 'number' }
-                  }
-                }
-              ]
-            },
-            HipsCm: {
-              anyOf: [
-                { type: 'number' },
-                {
-                  type: 'object',
-                  properties: {
-                    from: { type: 'number' },
-                    to: { type: 'number' }
-                  }
-                }
-              ]
-            },
-            HipsInch: {
-              anyOf: [
-                { type: 'number' },
-                {
-                  type: 'object',
-                  properties: {
-                    from: { type: 'number' },
-                    to: { type: 'number' }
-                  }
-                }
-              ]
-            },
+            BustCm: { type: 'number' },
+            BustInch: { type: 'number' },
+            WaistCm: { type: 'number' },
+            WaistInch: { type: 'number' },
+            HipsCm: { type: 'number' },
+            HipsInch: { type: 'number' },
             Sex: { type: 'string' }
           }
         }

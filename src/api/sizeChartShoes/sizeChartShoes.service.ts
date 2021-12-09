@@ -8,7 +8,7 @@ import {
   insertARShoes,
   deleteDataFromShoesTableAR
 } from '../../db/pg/db_queries';
-import { getAdidasSizeChartShoes, getReebokSizeChart } from '../../services/parser';
+import { getAdidasSizeChart, getReebokSizeChart } from '../../services/parser';
 
 class SizeChartShoes {
   private sizeNF: { [key: string]: number | string } = {
@@ -61,7 +61,7 @@ class SizeChartShoes {
       if (now > expiredDate.rows[0] || !expiredDate.rows[0]) {
         await this.dbDriver.executeQuery(deleteDataFromShoesTableAR(brand));
         const insertValues =
-          brand == 'reebok' ? await getReebokSizeChart('shoes') : await getAdidasSizeChartShoes();
+          brand == 'reebok' ? await getReebokSizeChart('shoes') : await getAdidasSizeChart('shoes');
         await this.dbDriver.executeQuery(insertARShoes(insertValues, brand));
       }
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(
