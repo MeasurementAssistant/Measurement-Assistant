@@ -9,7 +9,7 @@ export const getClothesSize: RouteOptions = {
   handler: <RouteHandlerMethod>getClothesSizeController
 };
 
-export const getClothesSizeBrand: RouteOptions = {
+export const getClothesBrandSize: RouteOptions = {
   method: 'GET',
   url: '/api/clothes-size/:unit/:brand',
   schema: getShoesSizeSchemaAR,
