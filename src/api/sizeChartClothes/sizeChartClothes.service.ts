@@ -19,18 +19,21 @@ class SizeChartClothes {
     Sex: 'not found',
     International: 0,
     BustCm: 0,
-    BustIn: 0,
+    BustInch: 0,
     WaistCm: 0,
-    WaistIn: 0,
+    WaistInch: 0,
     HipsCm: 0,
-    HipsIn: 0
+    HipsInch: 0
   };
   private sizeARNF: { [key: string]: number | string } = {
     RU: 0,
     EU: 0,
     BustCm: 0,
+    BustInch: 0,
     WaistCm: 0,
+    WaistInch: 0,
     HipsCm: 0,
+    HipsInch: 0,
     Sex: 'not found'
   };
   private dbDriver = new PostgresDriver();

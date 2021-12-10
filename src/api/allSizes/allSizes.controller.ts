@@ -21,10 +21,29 @@ export const getAllSizesResult = async (
   const { bustSize, waistSize, hipsSize, footLength, sex } = request.query;
   const { fileType, unit } = request.params;
   try {
-    const result =
-      fileType == 'pdf'
-        ? service.generatePDF()
-        : await service.generateXLSXfile(bustSize, waistSize, hipsSize, footLength, sex, unit);
+    if (fileType == 'pdf') {
+      const result = await service.generatePDF(
+        bustSize,
+        waistSize,
+        hipsSize,
+        footLength,
+        sex,
+        unit
+      );
+      reply.headers({
+        'Content-Disposition': 'attachment; filename="AllSizes.pdf"',
+        'Content-Type': 'application/pdf'
+      });
+      reply.code(200).send(result);
+    }
+    const result = await service.generateXLSXfile(
+      bustSize,
+      waistSize,
+      hipsSize,
+      footLength,
+      sex,
+      unit
+    );
     reply.headers({
       'Content-Disposition': 'attachment; filename="AllSizes.xlsx"',
       'Content-Type': 'application/xlsx'
