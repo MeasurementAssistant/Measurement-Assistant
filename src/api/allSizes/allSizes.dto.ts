@@ -10,7 +10,7 @@ export const getAllSizesSchema: FastifySchema = {
       footLength: { type: 'number' },
       sex: { type: 'string', enum: ['female', 'male'] }
     },
-    required: ['footLength', 'sex']
+    required: ['footLength', 'sex', 'bustSize', 'waistSize', 'hipsSize']
   },
   params: {
     type: 'object',
