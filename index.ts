@@ -20,7 +20,7 @@ server.route(routes.getAllSizes);
   console.log(`DB init result`, initResult);
 })();
 
-server.listen(process.env.PORT || 3000, (err, address) => {
+server.listen(process.env.PORT || 3000, '0.0.0.0', (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
