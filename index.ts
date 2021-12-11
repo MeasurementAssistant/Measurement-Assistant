@@ -1,10 +1,15 @@
 import fastify from 'fastify';
+import swagger from 'fastify-swagger';
 import PostgresDriver from './src/db/pg';
 import dbInitQuery from './src/db/pg/db_init';
+import swaggerConfig from './src/env-config/swagger.config';
+import envConfig from './src/env-config';
 import * as routes from './src/api';
 
 const server = fastify();
 const dbDriver = new PostgresDriver();
+
+server.register(swagger, swaggerConfig);
 
 server.route(routes.getShoesSize);
 server.route(routes.getShoesBrandSize);
@@ -20,8 +25,9 @@ server.route(routes.getAllSizes);
   console.log(`DB init result`, initResult);
 })();
 
-server.listen(process.env.PORT || 3000, '0.0.0.0', (err, address) => {
+server.listen(envConfig.port || 3000, envConfig.host, (err, address) => {
   if (err) {
+    server.swagger();
     console.error(err);
     process.exit(1);
   }

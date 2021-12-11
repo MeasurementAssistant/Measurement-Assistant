@@ -5,5 +5,8 @@ export const envConfig = {
     host: process.env.DB_HOST,
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT
-  }
+  },
+  port: process.env.PORT,
+  host: '0.0.0.0',
+  domain: 'measurment-assistant.herokuapp.com'
 };
