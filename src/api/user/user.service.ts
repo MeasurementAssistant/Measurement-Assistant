@@ -47,7 +47,7 @@ class UserService {
     try {
       const accessKey = crypto
         .createHash('sha256')
-        .update(`${usename}:${googleId}`, 'utf-8')
+        .update(`${usename}:${googleId}:${Date.now()}`, 'utf-8')
         .digest('hex');
       const accessKeyId: QueryResult = await this.dbDriver.executeQuery(createAccessKey(accessKey));
       return accessKeyId && accessKeyId.rows[0] ? accessKeyId.rows[0]._id : -1;
