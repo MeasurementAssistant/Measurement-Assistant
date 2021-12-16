@@ -20,6 +20,7 @@ server.route(routes.getClothesBrandSize);
 server.route(routes.getBodyType);
 server.route(routes.getAllSizes);
 server.route(routes.createUser);
+server.route(routes.updateAccessKey);
 
 (async () => {
   await dbDriver.connect();
