@@ -13,12 +13,13 @@ export const getAllSizesResult = async (
       hipsSize: number;
       footLength: number;
       sex: string;
+      lang: string;
     };
     Params: { fileType: string; unit: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { bustSize, waistSize, hipsSize, footLength, sex } = request.query;
+  const { bustSize, waistSize, hipsSize, footLength, sex, lang } = request.query;
   const { fileType, unit } = request.params;
   try {
     if (fileType == 'pdf') {
@@ -28,7 +29,8 @@ export const getAllSizesResult = async (
         hipsSize,
         footLength,
         sex,
-        unit
+        unit,
+        lang
       );
       reply.headers({
         'Content-Disposition': 'attachment; filename="AllSizes.pdf"',

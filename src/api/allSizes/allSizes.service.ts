@@ -22,8 +22,12 @@ class AllSizes {
     hipsSize: number,
     footLength: number,
     sex: string,
-    unit: string
+    unit: string,
+    lang?: string
   ): Promise<Buffer> {
+    if (lang) {
+      i18nObj.setLocale(lang);
+    }
     const shoes: { [key: string]: string | number } = await this.shoesService.getSizeChart(
       footLength,
       sex,

@@ -9,13 +9,16 @@ import {
   deleteDataFromShoesTableAR
 } from '../../db/pg/db_queries';
 import { getAdidasSizeChart, getReebokSizeChart } from '../../services/parser';
+import { configureI18n } from '../../i18n.config';
+
+const [i18nObj] = configureI18n(false);
 
 class SizeChartShoes {
   private sizeNF: { [key: string]: number | string } = {
     UK: 0,
     USA: 0,
     EU: 0,
-    Sex: 'not found',
+    Sex: i18nObj.__('notFound'),
     cm: 0,
     inch: 0
   };
@@ -24,7 +27,7 @@ class SizeChartShoes {
     EU: 0,
     UK: 0,
     USA: 0,
-    Sex: 'not found',
+    Sex: i18nObj.__('notFound'),
     cm: 0
   };
   private dbDriver = new PostgresDriver();
@@ -41,7 +44,7 @@ class SizeChartShoes {
       );
       await this.dbDriver.disconnect();
       if (sizeResult && sizeResult.rows[0]) {
-        return sizeResult.rows[0];
+        return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
       return this.sizeNF;
     } catch (error) {
@@ -69,7 +72,7 @@ class SizeChartShoes {
       );
       await this.dbDriver.disconnect();
       if (sizeResult && sizeResult.rows[0]) {
-        return sizeResult.rows[0];
+        return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
       return this.sizeARNF;
     } catch (error) {
