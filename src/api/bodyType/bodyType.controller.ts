@@ -7,15 +7,29 @@ const service = new BodyType();
 
 export const getBodyTypeResult = (
   request: FastifyRequest<{
-    Querystring: { bustSize: number; waistSize: number; hipsSize: number; sex: string };
+    Querystring: {
+      bustSize: number;
+      waistSize: number;
+      hipsSize: number;
+      sex: string;
+      lang: string;
+    };
     Params: { unit: string };
   }>,
   reply: FastifyReply
 ) => {
-  const { bustSize, waistSize, hipsSize, sex } = request.query;
+  const { bustSize, waistSize, hipsSize, sex, lang } = request.query;
   const { unit } = request.params;
   try {
-    const result = service.getBodyTypeforMeasurements(bustSize, waistSize, hipsSize, sex, unit);
+    const result = service.getBodyTypeforMeasurements(
+      bustSize,
+      waistSize,
+      hipsSize,
+      sex,
+      unit,
+      false,
+      lang
+    );
     reply.code(200).send({ bodyTypeResult: result });
   } catch (error: any) {
     reply.code(500).send({ error: <HttpError>error.message });

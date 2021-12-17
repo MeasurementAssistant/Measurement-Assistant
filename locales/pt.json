@@ -1,0 +1,29 @@
+{
+  "sex": {
+    "female": "fêmea",
+    "male": "macho"
+  },
+  "bodyType": {
+    "XShape": "Forma X",
+    "AShape": "Forma A",
+    "VShape": "Forma V",
+    "IShape": "Forma I",
+    "MixedShape": "Forma Mista"
+  },
+  "description": {
+    "female": {
+      "XShape": "O corpo em forma de X tem ombros e quadris relativamente do mesmo tamanho e uma cintura definida. A parte mais larga do corpo são as coxas, não a parte inferior, quando vista de frente.",
+      "AShape": "Esta é a forma feminina clássica do A, que tem a distribuição de gordura mais saudável e menos probabilidade de ter doenças cardíacas (seus sortudos!). A mulher em forma de A tem ombros mais estreitos do que quadris e coxas.",
+      "VShape": "Se você tem um corpo em forma de V ou um formato de corpo em triângulo invertido, seus quadris são mais estreitos do que os ombros. sua cintura pode ficar um pouco mais reta ou um pouco mais reta, mas a principal característica que define sua forma são as diferentes proporções de ombros e quadris.",
+      "IShape": "Você sabe que tem um tipo de corpo reto se tiver as mesmas medidas para todas as seções do corpo. Este tipo de corpo é popularmente conhecido como corpo de supermodelo. Também é chamado de corpo retangular ou de régua. Por não ter uma cintura bem definida, o corpo tende a parecer reto.",
+      "MixedShape": "Existem faixas muito amplas de tamanhos reais em cada forma. Além disso, algumas formas do corpo podem não se encaixar em nenhuma das formas listadas abaixo: A Forma, Forma de V, Forma de X, Forma de I."
+    },
+    "male": {
+      "XShape": "O corpo em forma de X tem ombros e quadris relativamente do mesmo tamanho e uma cintura elegante. A parte mais larga do corpo geralmente são as coxas, quando vistas de frente. Se este é o seu tipo de corpo, como homem, você descobrirá que é adequado para o treinamento de força e provavelmente construirá músculos com facilidade. Certifique-se de construir aqueles invejáveis músculos da coxa, panturrilha e nádegas, bem como seus braços e ombros. No entanto, tome cuidado para nunca deixá-la ir para a gordura, já que seu corpo armazena gordura facilmente. E você pode estar propenso a comer muitos carboidratos açucarados. Atenha-se a dietas com baixo teor de carboidratos, se puder.",
+      "AShape": "O homem em forma de A tem ombros mais estreitos do que quadris e coxas. Embora não seja o V clássico pelo qual muitos homens se esforçam, você tem a distribuição de gordura mais saudável e tem menos probabilidade de ter doenças cardíacas (você tem sorte!). Os exercícios cardiovasculares ajudam na distribuição de gordura e concentram seus esforços de treinamento de peso na academia na parte superior do corpo. Os treinos peitorais, dorsais e de ombros, bem como os braços, são cruciais para este tipo de corpo.",
+      "VShape": "Se você tem um corpo em forma de V ou um formato de corpo em triângulo invertido, seus quadris são mais estreitos do que os ombros. sua cintura pode ficar um pouco mais reta ou um pouco mais reta, mas a principal característica que define sua forma são as diferentes proporções de ombros e quadris. Este é o tipo clássico de corpo do Superman. Lembre-se de trabalhar essas pernas, bem como a parte superior do corpo, para evitar coxas de frango!",
+      "IShape": "O tipo de corpo I geralmente é magro - pense em Russel Brand, mas nem sempre. David Beckham é do tipo I e parece ótimo - mas ele claramente trabalhou nisso. Você vai se adaptar muito bem ao exercício cardiovascular e, embora os músculos cresçam menores, você pode parecer magro e em forma. Se você está acima do peso, provavelmente descobrirá que carrega o excesso de peso de maneira uniforme. Isso geralmente significa que você vai perder tudo por igual também.",
+      "MixedShape": "Existem faixas muito amplas de tamanhos reais em cada forma. Além disso, algumas formas do corpo podem não se encaixar em nenhuma das formas listadas abaixo: A Forma, Forma de V, Forma de X, Forma de I."
+    }
+  }
+}

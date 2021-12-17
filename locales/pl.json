@@ -1,0 +1,29 @@
+{
+  "sex": {
+    "female": "kobieta",
+    "male": "mężczyzna"
+  },
+  "bodyType": {
+    "XShape": "X kształt",
+    "AShape": "A kształt",
+    "VShape": "V kształt",
+    "IShape": "I kształt",
+    "MixedShape": "Mieszany kształt"
+  },
+  "description": {
+    "female": {
+      "XShape": "Body w kształcie litery X ma stosunkowo ten sam rozmiar ramion i bioder oraz wyraźnie zaznaczoną talię. Najszerszą częścią ciała są uda, a nie pośladki, patrząc z przodu.",
+      "AShape": "Jest to klasyczny kobiecy kształt litery A, który ma najzdrowszy rozkład tłuszczu i najmniej podatny na choroby serca (szczęśliwe szczęście!). Kobieta w kształcie litery A ma ramiona, które są węższe niż jej biodra i uda.",
+      "VShape": "Jeśli masz ciało w kształcie litery V lub ciało w kształcie odwróconego trójkąta, twoje biodra są węższe niż ramiona. Twoja talia może być lekko zagłębiona lub nieco prostsza, ale główną cechą kształtu Twojej sylwetki są różne proporcje ramion i bioder.",
+      "IShape": "Wiesz, że masz prosty typ ciała, jeśli masz te same wymiary dla wszystkich części ciała. Ten typ ciała jest powszechnie znany jako ciało supermodelki. Nazywany jest również ciałem prostokątnym lub linijką. Ponieważ nie ma dobrze zarysowanej talii, ciało ma tendencję do prostego wyglądu.",
+      "MixedShape": "W ramach każdego kształtu istnieje bardzo szeroka gama rzeczywistych rozmiarów. Ponadto niektóre kształty ciała mogą nie pasować do żadnego z kształtów wymienionych poniżej: Kształt, Kształt V, Kształt X, Kształt I."
+    },
+    "male": {
+      "XShape": "Body w kształcie litery X ma ramiona i biodra tego samego rozmiaru oraz zgrabną talię. Najszerszą częścią ciała są często uda, oglądane z przodu. Jeśli masz taki typ ciała, jako mężczyzna, przekonasz się, że dobrze nadajesz się do treningu siłowego i prawdopodobnie łatwo budujesz mięśnie. Upewnij się, że budujesz godne pozazdroszczenia mięśnie ud, łydek i pośladków, a także ramiona i ramiona. Uważaj jednak, aby nigdy nie dopuścić do tłuszczu, ponieważ twoje ciało łatwo odkłada tłuszcz. I możesz mieć skłonność do spożywania zbyt wielu słodkich węglowodanów. Trzymaj się diety niskowęglowodanowej, jeśli możesz.",
+      "AShape": "Mężczyzna w kształcie litery A ma ramiona, które są węższe niż jego biodra i uda. Chociaż nie jest to klasyczne V, do którego dąży wielu mężczyzn, masz najzdrowszą dystrybucję tłuszczu i najmniej prawdopodobne jest, że masz choroby serca (masz szczęście!). Ćwiczenia cardio pomogą w rozkładzie tkanki tłuszczowej i skoncentrują wysiłki związane z treningiem siłowym na siłowni na górnej części ciała. Treningi na mięśnie piersiowe, najszersze i najszersze oraz ramiona są kluczowe dla tego typu sylwetki.",
+      "VShape": "Jeśli masz ciało w kształcie litery V lub ciało w kształcie odwróconego trójkąta, twoje biodra są węższe niż ramiona. Twoja talia może być lekko zagłębiona lub nieco prostsza, ale główną cechą kształtu Twojej sylwetki są różne proporcje ramion i bioder. To klasyczny typ sylwetki Supermana. Pamiętaj jednak, aby ćwiczyć te nogi, a także górną część ciała, aby uniknąć udka z kurczaka!",
+      "IShape": "Typ sylwetki I jest często chudy – pomyśl Russell Brand, ale nie zawsze. David Beckham jest typem I i wygląda świetnie – ale wyraźnie nad tym pracował. Będziesz naprawdę dobrze przystosować się do ćwiczeń cardio i chociaż mięśnie będą się zmniejszać, możesz wyglądać na szczupłą i sprawną. Jeśli masz nadwagę, prawdopodobnie zauważysz, że nosisz nadwagę równomiernie. To często oznacza, że stracisz go równomiernie.",
+      "MixedShape": "W ramach każdego kształtu istnieje bardzo szeroka gama rzeczywistych rozmiarów. Ponadto niektóre kształty ciała mogą nie pasować do żadnego z kształtów wymienionych poniżej: Kształt, Kształt V, Kształt X, Kształt I."
+    }
+  }
+}

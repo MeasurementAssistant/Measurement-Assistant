@@ -6,6 +6,7 @@ import dbInitQuery from './src/db/pg/db_init';
 import swaggerConfig from './src/env-config/swagger.config';
 import envConfig from './src/env-config';
 import * as routes from './src/api';
+import { configureI18n } from './src/i18n.config';
 
 const server = fastify();
 const dbDriver = new PostgresDriver();
@@ -31,6 +32,8 @@ server.route(routes.updateAccessKey);
 
 server.listen(envConfig.port || 3000, envConfig.host, (err, address) => {
   if (err) {
+    const [i18n] = configureI18n(true);
+    i18n.init;
     server.swagger();
     console.error(err);
     process.exit(1);

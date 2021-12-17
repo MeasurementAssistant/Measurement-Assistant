@@ -7,6 +7,9 @@ import path from 'path';
 import * as fs from 'fs/promises';
 import { jsPDF } from 'jspdf';
 import { tableHeaders } from './tableHeaders';
+import { configureI18n } from '../../i18n.config';
+
+const [i18nObj] = configureI18n(false);
 
 class AllSizes {
   private shoesService = new SizeChartShoes();
@@ -37,20 +40,22 @@ class AllSizes {
       waistSize,
       hipsSize,
       sex,
-      unit
+      unit,
+      true
     );
 
     const footBuffer = await this.imgBuffer('footLength');
     const bodyMeasure =
       sex == 'female' ? await this.imgBuffer('woman') : await this.imgBuffer('man');
-    const shapeBuffer = await this.shapeImgBuffer(bodyTypeData.bodyType, sex);
+    const shapeBuffer = await this.shapeImgBuffer(bodyTypeData.bodyTypeEn, sex);
 
     const doc = new jsPDF();
 
     doc.addImage(footBuffer, 'PNG', 10, 10, 70, 70);
     doc.text(`${footLength} ${unit}`, 33, 85);
-    doc.text(`Shoes size`, 100, 25);
-    doc.text(`Clothes size`, 165, 105);
+    console.log(i18nObj.__('size.shoes'));
+    doc.text(i18nObj.__('size.shoes'), 100, 25);
+    doc.text(i18nObj.__('size.clothes'), 165, 105);
     doc.table(100, 30, [shoesData], Object.keys(shoesData), { fontSize: 12, autoSize: true });
 
     doc.addImage(bodyMeasure, 'PNG', 10, 105, 50, 120);
@@ -72,8 +77,10 @@ class AllSizes {
     doc.addImage(shapeBuffer, 'PNG', 150, 215, 45, 80);
     doc.setTextColor('#000000');
     doc.setFontSize(12);
-    doc.text(`Body Type: ${bodyTypeData.bodyType}`, 45, 240);
-    doc.text(`Description: ${bodyTypeData.description}`, 45, 250, { maxWidth: 100 });
+    doc.text(i18nObj.__('bodyType.name') + `: ${bodyTypeData.bodyType}`, 45, 240);
+    doc.text(i18nObj.__('description.name') + `: ${bodyTypeData.description}`, 45, 250, {
+      maxWidth: 100
+    });
 
     return Buffer.from(doc.output('arraybuffer'));
   }
@@ -95,7 +102,11 @@ class AllSizes {
   }
 
   private async shapeImgBuffer(bodyType: string, sex: string) {
-    const bodyTypeNew = bodyType == 'You have mixed body type' ? 'question' : bodyType;
+    console.log(i18nObj);
+    console.log(i18nObj.getCatalog(`bodyType.${bodyType}`));
+    console.log(i18nObj.getCatalog());
+
+    const bodyTypeNew = bodyType == 'Mixed Shape' ? 'question' : bodyType;
     const imgPath = path.resolve(
       __dirname,
       path.join(process.cwd(), 'assets', 'img', `${sex}${bodyTypeNew.replace(/\s/g, '')}.png`)

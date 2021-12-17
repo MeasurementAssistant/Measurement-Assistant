@@ -1,0 +1,29 @@
+{
+  "sex": {
+    "female": "weiblich",
+    "male": "männlich"
+  },
+  "bodyType": {
+    "XShape": "X Form",
+    "AShape": "A Form",
+    "VShape": "V Form",
+    "IShape": "I Form",
+    "MixedShape": "Gemischte Form"
+  },
+  "description": {
+    "female": {
+      "XShape": "Der Körper in X-Form hat relativ gleich große Schultern und Hüften und eine definierte Taille. Die breiteste Stelle des Körpers sind die Oberschenkel, nicht der Po, von vorne gesehen.",
+      "AShape": "Dies ist die klassische weibliche Form des A, die die gesündeste Fettverteilung hat und am wenigsten an Herzkrankheiten leidet (Ihr Glückspilz!). Die A-Form-Frau hat Schultern, die schmaler sind als ihre Hüften und Oberschenkel.",
+      "VShape": "Wenn Sie einen V-förmigen Körper oder eine umgekehrte Dreiecks-Körperform haben, sind Ihre Hüften schmaler als Ihre Schultern. Ihre Taille kann leicht nach innen gehen oder etwas gerader sein, aber das wichtigste Merkmal Ihrer Form sind die unterschiedlichen Proportionen von Schultern und Hüften.",
+      "IShape": "Sie wissen, dass Sie einen geraden Körperbau haben, wenn Sie an allen Körperteilen die gleichen Maße haben. Dieser Körpertyp wird im Volksmund als Supermodel-Körper bezeichnet. Es wird auch als rechteckiger oder Linealkörper bezeichnet. Da es keine gut definierte Taille hat, neigt der Körper dazu, gerade zu wirken.",
+      "MixedShape": "Es gibt sehr große Bereiche der tatsächlichen Größen innerhalb jeder Form. Außerdem passen einige Körperformen möglicherweise nicht in eine der unten aufgeführten Formen: A-Form, V-Form, X-Form, I-Form."
+    },
+    "male": {
+      "XShape": "Der Körper in X-Form hat relativ gleich große Schultern und Hüften und eine ordentliche Taille. Die breiteste Stelle des Körpers sind oft die Oberschenkel, von vorne betrachtet. Wenn dies Ihr Körpertyp ist, werden Sie als Mann feststellen, dass Sie gut für das Krafttraining geeignet sind und wahrscheinlich leicht Muskeln aufbauen. Stellen Sie sicher, dass Sie diese beneidenswerten Oberschenkel-, Waden- und Gesäßmuskeln sowie Ihre Arme und Schultern aufbauen. Achten Sie jedoch darauf, dass es nie zu Fett wird, da Ihr Körper Fett leicht abbauen kann. Und Sie können dazu neigen, zu viele zuckerhaltige Kohlenhydrate zu essen. Halten Sie sich nach Möglichkeit an eine Low-Carb-Diät.",
+      "AShape": "Der A-Shape-Mann hat Schultern, die schmaler sind als seine Hüften und Oberschenkel. Auch wenn es nicht das klassische V ist, nach dem viele Männer streben, haben Sie die gesündeste Fettverteilung und sind am seltensten an Herzerkrankungen erkrankt (Sie Glückspilz!). Cardio-Training hilft bei der Fettverteilung und konzentriert Ihre Krafttrainingsbemühungen im Fitnessstudio auf Ihren Oberkörper. Brust-, Lats- und Schultertraining sowie Arme sind für diesen Körpertyp entscheidend.",
+      "VShape": "Wenn Sie einen V-förmigen Körper oder eine umgekehrte Dreiecks-Körperform haben, sind Ihre Hüften schmaler als Ihre Schultern. Ihre Taille kann leicht nach innen gehen oder etwas gerader sein, aber das wichtigste Merkmal Ihrer Form sind die unterschiedlichen Proportionen von Schultern und Hüften. Dies ist der klassische Superman-Körpertyp. Denken Sie jedoch daran, diese Beine sowie Ihren Oberkörper zu trainieren, um Hühnerbeine zu vermeiden!",
+      "IShape": "Der I-Körpertyp ist oft dünn – denken Sie an Russell Brand, aber nicht immer. David Beckham ist ein I-Typ und sieht toll aus – aber er hat eindeutig daran gearbeitet. Sie werden sich sehr gut an das Cardio-Training anpassen und während die Muskeln kleiner werden, können Sie schlank und fit erscheinen. Wenn Sie übergewichtig sind, werden Sie wahrscheinlich feststellen, dass Sie das Übergewicht gleichmäßig tragen. Dies bedeutet oft, dass Sie es auch gleichmäßig verlieren.",
+      "MixedShape": "Es gibt sehr große Bereiche der tatsächlichen Größen innerhalb jeder Form. Außerdem passen einige Körperformen möglicherweise nicht in eine der unten aufgeführten Formen: A-Form, V-Form, X-Form, I-Form."
+    }
+  }
+}
