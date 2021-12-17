@@ -85,6 +85,14 @@ export const createAccessKey = (accessKey: string): string => `
   insert into access_keys (value)
   values ('${accessKey}') returning _id`;
 
+export const updateAccessKey = (accessKey: string, id: number): string => `
+  update access_keys
+  set value = '${accessKey}' 
+  where _id = ${id}`;
+
+export const findUserAccessKeyId = (username: string): string => `
+  select u.access_key_id "accessKeyId" from users u where u.username = '${username}';`;
+
 export const createUser = (username: string, accessKeyId: number): string => `
   insert into users(username, role_id, access_key_id)
   values ('${username}',1,${accessKeyId});`;

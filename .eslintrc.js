@@ -25,6 +25,8 @@ module.exports = {
     'jest/valid-expect': 'error',
     'sonarjs/cognitive-complexity': ['error', 16],
     'sonarjs/no-identical-expressions': 'error',
+    '@typescript-eslint/no-var-requires': 0,
+    'sonarjs/no-duplicate-string': 0,
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/naming-convention': [
       'error',

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { QueryResult } from 'pg';
 import HttpError from '../../errors/httpErrors';
 import { getAdidasSizeChart, getReebokSizeChart } from '../../services/parser';
@@ -10,13 +9,17 @@ import {
   insertARClothes,
   getSizeClothesAR
 } from '../../db/pg/db_queries';
+import { configureI18n } from '../../i18n.config';
 
+const [i18nObj] = configureI18n(false);
+
+// i18nObj.setLocale('en');
 class SizeChartClothes {
   private sizeNF: { [key: string]: number | string } = {
     EU: 0,
     UK: 0,
     USA: 0,
-    Sex: 'not found',
+    Sex: i18nObj.__('notFound'),
     International: 0,
     BustCm: 0,
     BustInch: 0,
@@ -34,7 +37,7 @@ class SizeChartClothes {
     WaistInch: 0,
     HipsCm: 0,
     HipsInch: 0,
-    Sex: 'not found'
+    Sex: i18nObj.__('notFound')
   };
   private dbDriver = new PostgresDriver();
 
@@ -52,7 +55,7 @@ class SizeChartClothes {
       );
       await this.dbDriver.disconnect();
       if (sizeResult && sizeResult.rows[0]) {
-        return sizeResult.rows[0];
+        return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
       return this.sizeNF;
     } catch (error) {
@@ -87,7 +90,7 @@ class SizeChartClothes {
       );
       await this.dbDriver.disconnect();
       if (sizeResult && sizeResult.rows[0]) {
-        return sizeResult.rows[0];
+        return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
       return this.sizeARNF;
     } catch (error) {
