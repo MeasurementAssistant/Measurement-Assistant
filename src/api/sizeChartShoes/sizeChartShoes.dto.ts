@@ -41,7 +41,11 @@ export const getShoesSizeSchemaAR: FastifySchema = {
     type: 'object',
     properties: {
       footLength: { type: 'number' },
-      sex: { type: 'string', enum: ['female', 'male'] }
+      sex: { type: 'string', enum: ['female', 'male'] },
+      lang: {
+        type: 'string',
+        enum: ['en', 'de', 'es', 'fr', 'it', 'pl', 'pt', 'ru', 'uk']
+      }
     },
     required: ['footLength', 'sex']
   },

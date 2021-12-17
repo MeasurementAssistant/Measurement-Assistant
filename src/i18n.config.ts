@@ -6,7 +6,7 @@ export const configureI18n = (isGlobal: boolean) => {
 
   i18n.configure({
     register: isGlobal ? global : i18nObj,
-    locales: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pl', 'pt', 'ru', 'uk'],
+    locales: ['en', 'de', 'es', 'fr', 'it', 'pl', 'pt', 'ru', 'uk'],
     directory: path.resolve(__dirname, path.join(process.cwd(), 'locales')),
     defaultLocale: 'en',
     queryParameter: 'lang',

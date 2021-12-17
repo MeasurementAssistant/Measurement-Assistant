@@ -18,7 +18,7 @@ class SizeChartShoes {
     UK: 0,
     USA: 0,
     EU: 0,
-    Sex: i18nObj.__('notFound'),
+    Sex: 'Not found',
     cm: 0,
     inch: 0
   };
@@ -27,7 +27,7 @@ class SizeChartShoes {
     EU: 0,
     UK: 0,
     USA: 0,
-    Sex: i18nObj.__('notFound'),
+    Sex: 'Not found',
     cm: 0
   };
   private dbDriver = new PostgresDriver();
@@ -35,9 +35,13 @@ class SizeChartShoes {
   async getSizeChart(
     footLength: number,
     sex: string,
-    unit: string
+    unit: string,
+    lang?: string
   ): Promise<{ [key: string]: number | string }> {
     try {
+      if (lang) {
+        i18nObj.setLocale(lang);
+      }
       await this.dbDriver.connect();
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(
         getSizeShoes(footLength, sex, unit)
@@ -46,7 +50,7 @@ class SizeChartShoes {
       if (sizeResult && sizeResult.rows[0]) {
         return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
-      return this.sizeNF;
+      return { ...this.sizeNF, Sex: i18nObj.__('notFound') };
     } catch (error) {
       throw new HttpError(<string>error);
     }
@@ -55,9 +59,13 @@ class SizeChartShoes {
     footLength: number,
     sex: string,
     unit: string,
-    brand: string
+    brand: string,
+    lang?: string
   ): Promise<{ [key: string]: number | string }> {
     try {
+      if (lang) {
+        i18nObj.setLocale(lang);
+      }
       const now = new Date();
       await this.dbDriver.connect();
       const expiredDate: QueryResult = await this.dbDriver.executeQuery(getShoesExpiredDate(brand));
@@ -74,7 +82,7 @@ class SizeChartShoes {
       if (sizeResult && sizeResult.rows[0]) {
         return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
-      return this.sizeARNF;
+      return { ...this.sizeARNF, Sex: i18nObj.__('notFound') };
     } catch (error) {
       throw new HttpError(<string>error);
     }

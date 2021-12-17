@@ -7,7 +7,11 @@ export const getClothesSizeSchema: FastifySchema = {
       waistSize: { type: 'number' },
       hipsSize: { type: 'number' },
       bustSize: { type: 'number' },
-      sex: { type: 'string', enum: ['female', 'male'] }
+      sex: { type: 'string', enum: ['female', 'male'] },
+      lang: {
+        type: 'string',
+        enum: ['en', 'de', 'es', 'fr', 'it', 'pl', 'pt', 'ru', 'uk']
+      }
     },
     required: ['waistSize', 'hipsSize', 'bustSize', 'sex']
   },

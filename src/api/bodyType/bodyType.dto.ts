@@ -10,7 +10,7 @@ export const getBodyTypeSchema: FastifySchema = {
       sex: { type: 'string', enum: ['female', 'male'] },
       lang: {
         type: 'string',
-        enum: ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pl', 'pt', 'ru', 'uk']
+        enum: ['en', 'de', 'es', 'fr', 'it', 'pl', 'pt', 'ru', 'uk']
       }
     },
     required: ['bustSize', 'waistSize', 'hipsSize', 'sex']
