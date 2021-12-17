@@ -3,14 +3,21 @@
     "female": "mujer",
     "male": "masculino"
   },
+  "size": {
+    "shoes": "Talla de zapatos",
+    "clothes": "Talla de ropa"
+  },
+  "notFound": "No encontrado",
   "bodyType": {
     "XShape": "Forma X",
     "AShape": "Forma A",
     "VShape": "Forma V",
     "IShape": "Forma I",
-    "MixedShape": "Forma mixta"
+    "MixedShape": "Forma mixta",
+    "name": "Tipo de cuerpo"
   },
   "description": {
+    "name": "Descripción",
     "female": {
       "XShape": "El cuerpo en forma de X tiene hombros y caderas relativamente del mismo tamaño y una cintura definida. La parte más ancha del cuerpo son los muslos, no la parte inferior, cuando se ve de frente.",
       "AShape": "Esta es la clásica forma femenina de la A, que tiene la distribución más saludable de la grasa y la menor probabilidad de tener enfermedades cardíacas (¡suerte!). La mujer con forma de A tiene hombros más estrechos que sus caderas y muslos.",

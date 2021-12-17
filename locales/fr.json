@@ -3,14 +3,21 @@
     "female": "femelle",
     "male": "mâle"
   },
+  "size": {
+    "shoes": "Taille de chaussures",
+    "clothes": "Taille des vêtements"
+  },
+  "notFound": "Not Found",
   "bodyType": {
     "XShape": "Forme X",
     "AShape": "Forme A",
     "VShape": "Forme V",
     "IShape": "Forme I",
-    "MixedShape": "Forme mixte"
+    "MixedShape": "Forme mixte",
+    "name": "Type de corps"
   },
   "description": {
+    "name": "La description",
     "female": {
       "XShape": "Le corps en forme de X a des épaules et des hanches relativement de la même taille et une taille définie. La partie la plus large du corps est les cuisses, pas le bas, vu de face.",
       "AShape": "C'est la forme féminine classique du A, qui a la distribution de graisse la plus saine et la moins susceptible d'avoir une maladie cardiaque (vous les chanceux !). La femme de forme A a des épaules plus étroites que ses hanches et ses cuisses.",

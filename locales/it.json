@@ -3,14 +3,20 @@
     "female": "femmina",
     "male": "maschio"
   },
+  "size": {
+    "shoes": "Taglia scarpe",
+    "clothes": "Taglia vestiti"
+  },
   "bodyType": {
     "XShape": "Forma a X",
     "AShape": "Forma a A",
     "VShape": "Forma a V",
     "IShape": "Forma a I",
-    "MixedShape": "Forma mista"
+    "MixedShape": "Forma mista",
+    "name": "Tipo di corpo"
   },
   "description": {
+    "name": "Descrizione",
     "female": {
       "XShape": "Il corpo a forma di X ha spalle e fianchi relativamente della stessa dimensione e una vita definita. La parte più larga del corpo sono le cosce, non il fondoschiena, se viste di fronte.",
       "AShape": "Questa è la classica forma femminile della A, che ha la più sana distribuzione del grasso e meno probabilità di avere malattie cardiache (fortunati!). La donna a forma di A ha le spalle più strette dei fianchi e delle cosce.",
