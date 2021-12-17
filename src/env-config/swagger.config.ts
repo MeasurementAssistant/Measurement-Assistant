@@ -36,8 +36,6 @@ export default {
         '- German\n' +
         '- Italian\n' +
         '- Polish\n' +
-        '- Korean\n' +
-        '- Japanese\n' +
         '- Portuguese\n',
       version: '0.1.0'
     },
