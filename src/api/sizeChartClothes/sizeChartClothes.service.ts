@@ -13,7 +13,6 @@ import { configureI18n } from '../../i18n.config';
 
 const [i18nObj] = configureI18n(false);
 
-// i18nObj.setLocale('en');
 class SizeChartClothes {
   private sizeNF: { [key: string]: number | string } = {
     EU: 0,
@@ -46,9 +45,13 @@ class SizeChartClothes {
     hipsSize: number,
     bustSize: number,
     sex: string,
-    unit: string
+    unit: string,
+    lang?: string
   ): Promise<{ [key: string]: number | string }> {
     try {
+      if (lang) {
+        i18nObj.setLocale(lang);
+      }
       await this.dbDriver.connect();
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(
         getSizeClothes(bustSize, waistSize, hipsSize, sex, unit)
@@ -69,9 +72,13 @@ class SizeChartClothes {
     bustSize: number,
     sex: string,
     unit: string,
-    brand: string
+    brand: string,
+    lang?: string
   ): Promise<{ [key: string]: number | string }> {
     try {
+      if (lang) {
+        i18nObj.setLocale(lang);
+      }
       const now = new Date();
       await this.dbDriver.connect();
       const expiredDate: QueryResult = await this.dbDriver.executeQuery(

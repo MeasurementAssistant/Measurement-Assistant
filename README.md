@@ -36,8 +36,6 @@ The API is capable of delivering results in a total of 10 world languages. To ch
 - German
 - Italian
 - Polish
-- Korean
-- Japanese
 - Portuguese
 
 ### <ins> Technologies </ins>:

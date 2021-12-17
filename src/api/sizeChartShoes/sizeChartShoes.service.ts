@@ -35,9 +35,13 @@ class SizeChartShoes {
   async getSizeChart(
     footLength: number,
     sex: string,
-    unit: string
+    unit: string,
+    lang?: string
   ): Promise<{ [key: string]: number | string }> {
     try {
+      if (lang) {
+        i18nObj.setLocale(lang);
+      }
       await this.dbDriver.connect();
       const sizeResult: QueryResult = await this.dbDriver.executeQuery(
         getSizeShoes(footLength, sex, unit)
@@ -55,9 +59,13 @@ class SizeChartShoes {
     footLength: number,
     sex: string,
     unit: string,
-    brand: string
+    brand: string,
+    lang?: string
   ): Promise<{ [key: string]: number | string }> {
     try {
+      if (lang) {
+        i18nObj.setLocale(lang);
+      }
       const now = new Date();
       await this.dbDriver.connect();
       const expiredDate: QueryResult = await this.dbDriver.executeQuery(getShoesExpiredDate(brand));
