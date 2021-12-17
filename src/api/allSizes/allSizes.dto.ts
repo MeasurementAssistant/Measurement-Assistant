@@ -1,6 +1,13 @@
 import { FastifySchema } from 'fastify';
 
 export const getAllSizesSchema: FastifySchema = {
+  headers: {
+    type: 'object',
+    properties: {
+      Authorization: { type: 'string' }
+    },
+    required: ['Authorization']
+  },
   querystring: {
     type: 'object',
     properties: {

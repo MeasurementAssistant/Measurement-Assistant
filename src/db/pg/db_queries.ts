@@ -105,3 +105,7 @@ export const getUserInfo = (username: string) => `
   from users u, access_keys ak 
   where u.username = '${username}' 
   and u.access_key_id = ak._id;`;
+
+export const findAccessKey = (accessKey: string) => `
+select * from access_keys ak
+where ak.value='${accessKey}';`;

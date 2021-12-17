@@ -7,6 +7,7 @@ const service = new AllSizes();
 
 export const getAllSizesResult = async (
   request: FastifyRequest<{
+    Headers: { authorization: string };
     Querystring: {
       bustSize: number;
       waistSize: number;
@@ -21,6 +22,7 @@ export const getAllSizesResult = async (
 ) => {
   const { bustSize, waistSize, hipsSize, footLength, sex, lang } = request.query;
   const { fileType, unit } = request.params;
+  const { authorization } = request.headers;
   try {
     if (fileType == 'pdf') {
       const result = await service.generatePDF(
@@ -30,6 +32,7 @@ export const getAllSizesResult = async (
         footLength,
         sex,
         unit,
+        authorization,
         lang
       );
       reply.headers({
