@@ -3,14 +3,21 @@
     "female": "kobieta",
     "male": "mężczyzna"
   },
+  "size": {
+    "shoes": "Rozmiar butów",
+    "clothes": "Rozmiar ubrania"
+  },
+  "notFound": "Nie znaleziono",
   "bodyType": {
     "XShape": "X kształt",
     "AShape": "A kształt",
     "VShape": "V kształt",
     "IShape": "I kształt",
-    "MixedShape": "Mieszany kształt"
+    "MixedShape": "Mieszany kształt",
+    "name": "Typ ciała"
   },
   "description": {
+    "name": "Opis",
     "female": {
       "XShape": "Body w kształcie litery X ma stosunkowo ten sam rozmiar ramion i bioder oraz wyraźnie zaznaczoną talię. Najszerszą częścią ciała są uda, a nie pośladki, patrząc z przodu.",
       "AShape": "Jest to klasyczny kobiecy kształt litery A, który ma najzdrowszy rozkład tłuszczu i najmniej podatny na choroby serca (szczęśliwe szczęście!). Kobieta w kształcie litery A ma ramiona, które są węższe niż jej biodra i uda.",
