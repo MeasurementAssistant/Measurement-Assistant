@@ -18,7 +18,7 @@ class SizeChartClothes {
     EU: 0,
     UK: 0,
     USA: 0,
-    Sex: i18nObj.__('notFound'),
+    Sex: 'Not found',
     International: 0,
     BustCm: 0,
     BustInch: 0,
@@ -36,7 +36,7 @@ class SizeChartClothes {
     WaistInch: 0,
     HipsCm: 0,
     HipsInch: 0,
-    Sex: i18nObj.__('notFound')
+    Sex: 'Not found'
   };
   private dbDriver = new PostgresDriver();
 
@@ -60,7 +60,7 @@ class SizeChartClothes {
       if (sizeResult && sizeResult.rows[0]) {
         return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
-      return this.sizeNF;
+      return { ...this.sizeNF, Sex: i18nObj.__('notFound') };
     } catch (error) {
       throw new HttpError(<string>error);
     }
@@ -99,7 +99,7 @@ class SizeChartClothes {
       if (sizeResult && sizeResult.rows[0]) {
         return { ...sizeResult.rows[0], Sex: i18nObj.__(`sex.${sex}`) };
       }
-      return this.sizeARNF;
+      return { ...this.sizeARNF, Sex: i18nObj.__('notFound') };
     } catch (error) {
       throw new HttpError(<string>error);
     }
