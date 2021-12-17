@@ -1,0 +1,36 @@
+{
+  "sex": {
+    "female": "mujer",
+    "male": "masculino"
+  },
+  "size": {
+    "shoes": "Talla de zapatos",
+    "clothes": "Talla de ropa"
+  },
+  "notFound": "No encontrado",
+  "bodyType": {
+    "XShape": "Forma X",
+    "AShape": "Forma A",
+    "VShape": "Forma V",
+    "IShape": "Forma I",
+    "MixedShape": "Forma mixta",
+    "name": "Tipo de cuerpo"
+  },
+  "description": {
+    "name": "Descripción",
+    "female": {
+      "XShape": "El cuerpo en forma de X tiene hombros y caderas relativamente del mismo tamaño y una cintura definida. La parte más ancha del cuerpo son los muslos, no la parte inferior, cuando se ve de frente.",
+      "AShape": "Esta es la clásica forma femenina de la A, que tiene la distribución más saludable de la grasa y la menor probabilidad de tener enfermedades cardíacas (¡suerte!). La mujer con forma de A tiene hombros más estrechos que sus caderas y muslos.",
+      "VShape": "Si tienes un cuerpo en forma de V o un cuerpo con forma de triángulo invertido, tus caderas son más estrechas que tus hombros. su cintura puede entrar un poco o ser un poco más recta, pero la característica principal que define su forma son las diferentes proporciones de hombros y caderas.",
+      "IShape": "Sabes que tienes un tipo de cuerpo recto si tienes las mismas medidas para todas las secciones de tu cuerpo. Este tipo de cuerpo se conoce popularmente como cuerpo de supermodelo. También se le llama cuerpo rectangular o regla. Dado que no tiene una cintura bien definida, el cuerpo tiende a verse recto.",
+      "MixedShape": "Hay una amplia gama de tamaños reales dentro de cada forma. Además, es posible que algunas formas del cuerpo no encajen en ninguna de las formas que se enumeran a continuación: Forma A, Forma de V, Forma de X, Forma de I."
+    },
+    "male": {
+      "XShape": "El cuerpo en forma de X tiene hombros y caderas relativamente del mismo tamaño y una cintura ordenada. La parte más ancha del cuerpo son a menudo los muslos, cuando se ven desde el frente. Si este es su tipo de cuerpo, como hombre, encontrará que está bien preparado para el entrenamiento de fuerza y ​​probablemente desarrolle músculo fácilmente. Asegúrese de desarrollar esos envidiables músculos de muslos, pantorrillas y glúteos, así como brazos y hombros. Sin embargo, tenga cuidado de nunca dejar que se convierta en grasa, ya que su cuerpo deposita grasa fácilmente. Y puede ser propenso a comer demasiados carbohidratos azucarados. Cíñete a dietas bajas en carbohidratos si puedes.",
+      "AShape": "El hombre de forma A tiene hombros más estrechos que sus caderas y muslos. Si bien no es la V clásica por la que luchan muchos hombres, usted tiene la distribución más saludable de la grasa y es menos probable que tenga una enfermedad cardíaca (¡suerte!). El ejercicio cardiovascular ayudará con la distribución de la grasa y concentrará sus esfuerzos de entrenamiento con pesas en el gimnasio en la parte superior de su cuerpo. Los entrenamientos de pectorales, dorsales y hombros, así como los brazos, son cruciales para este tipo de cuerpo.",
+      "VShape": "Si tienes un cuerpo en forma de V o un cuerpo con forma de triángulo invertido, tus caderas son más estrechas que tus hombros. su cintura puede entrar un poco o ser un poco más recta, pero la característica principal que define su forma son las diferentes proporciones de hombros y caderas. Este es el tipo de cuerpo clásico de Superman. Sin embargo, recuerde ejercitar esas piernas y la parte superior del cuerpo para evitar las piernas de pollo.",
+      "IShape": "El tipo de cuerpo I suele ser delgado, piense en Russell Brand, pero no siempre. David Beckham es un tipo I y se ve muy bien, pero claramente ha trabajado en eso. Te adaptarás muy bien al ejercicio cardiovascular y, aunque los músculos se desarrollarán más pequeños, puedes parecer delgado y en forma. Si tiene sobrepeso, probablemente encontrará que lleva el exceso de peso de manera uniforme. Esto a menudo significa que también lo perderá de manera uniforme.",
+      "MixedShape": "Hay una amplia gama de tamaños reales dentro de cada forma. Además, es posible que algunas formas del cuerpo no encajen en ninguna de las formas que se enumeran a continuación: Forma A, Forma de V, Forma de X, Forma de I."
+    }
+  }
+}

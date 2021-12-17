@@ -1,0 +1,36 @@
+{
+  "sex": {
+    "female": "femelle",
+    "male": "mâle"
+  },
+  "size": {
+    "shoes": "Taille de chaussures",
+    "clothes": "Taille des vêtements"
+  },
+  "notFound": "Pas trouvé",
+  "bodyType": {
+    "XShape": "Forme X",
+    "AShape": "Forme A",
+    "VShape": "Forme V",
+    "IShape": "Forme I",
+    "MixedShape": "Forme mixte",
+    "name": "Type de corps"
+  },
+  "description": {
+    "name": "La description",
+    "female": {
+      "XShape": "Le corps en forme de X a des épaules et des hanches relativement de la même taille et une taille définie. La partie la plus large du corps est les cuisses, pas le bas, vu de face.",
+      "AShape": "C'est la forme féminine classique du A, qui a la distribution de graisse la plus saine et la moins susceptible d'avoir une maladie cardiaque (vous les chanceux !). La femme de forme A a des épaules plus étroites que ses hanches et ses cuisses.",
+      "VShape": "Si vous avez un corps en forme de V ou un corps en forme de triangle inversé, vos hanches sont plus étroites que vos épaules. votre taille peut rentrer légèrement ou être un peu plus droite, mais la principale caractéristique de votre silhouette réside dans les différentes proportions d'épaules et de hanches.",
+      "IShape": "Vous savez que vous avez un type de corps droit si vous avez les mêmes mensurations pour toutes les parties de votre corps. Ce type de corps est communément appelé corps de mannequin. On l'appelle aussi un corps rectangulaire ou de règle. Comme il n'a pas une taille bien définie, le corps a tendance à paraître droit.",
+      "MixedShape": "Il existe de très larges gammes de tailles réelles au sein de chaque forme. En outre, certaines formes de corps peuvent ne pas correspondre aux formes répertoriées ci-dessous : forme A, forme V, forme X, forme I."
+    },
+    "male": {
+      "XShape": "Le corps en forme de X a des épaules et des hanches relativement de la même taille et une taille soignée. La partie la plus large du corps est souvent les cuisses, vues de face. Si c'est votre type de corps, en tant qu'homme, vous constaterez que vous êtes bien adapté à l'entraînement en force et que vous développerez probablement facilement vos muscles. Assurez-vous de développer ces muscles enviables des cuisses, des mollets et des fesses ainsi que vos bras et vos épaules. Faites attention de ne jamais le laisser grossir, car votre corps accumule facilement les graisses. Et vous pouvez être enclin à manger trop de glucides sucrés. Tenez-vous en aux régimes faibles en glucides si vous le pouvez.",
+      "AShape": "L'homme de forme A a des épaules plus étroites que ses hanches et ses cuisses. Bien que ce ne soit pas le V classique que beaucoup d'hommes recherchent, vous avez la distribution de graisse la plus saine et êtes le moins susceptible d'avoir une maladie cardiaque (vous avez de la chance !). Les exercices cardio vous aideront à répartir les graisses et à concentrer vos efforts de musculation au gymnase sur le haut de votre corps. Les exercices des pectoraux, des lats et des épaules ainsi que des bras sont cruciaux pour ce type de corps.",
+      "VShape": "Si vous avez un corps en forme de V ou un corps en forme de triangle inversé, vos hanches sont plus étroites que vos épaules. votre taille peut rentrer légèrement ou être un peu plus droite, mais la principale caractéristique de votre silhouette réside dans les différentes proportions d'épaules et de hanches. C'est le type de corps classique de Superman. N'oubliez pas de travailler ces jambes ainsi que le haut de votre corps, pour éviter les cuisses de poulet!",
+      "IShape": "Le type de corps I est souvent maigre – pensez à Russell Brand, mais pas toujours. David Beckham est un type I et a fière allure – mais il y a clairement travaillé. Vous vous adapterez très bien à l'exercice cardio et, tandis que les muscles se développeront plus petit, vous pourrez paraître mince et en forme. Si vous êtes en surpoids, vous constaterez probablement que vous portez l'excès de poids de manière uniforme. Cela signifie souvent que vous le perdrez également de manière uniforme.",
+      "MixedShape": "Il existe de très larges gammes de tailles réelles au sein de chaque forme. En outre, certaines formes de corps peuvent ne pas correspondre aux formes répertoriées ci-dessous : forme A, forme V, forme X, forme I."
+    }
+  }
+}

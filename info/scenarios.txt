@@ -1,0 +1,55 @@
+Сценарій 1:
+Створення користувача:
+-додається Id користувача User.UniqueID;
+-додається унікальне ім'я User.Username, який вносить користувач;
+-додається роль користувача User.RoleID, яку було обрано;
+
+Сценарій 2:
+Генерація Accesskey:
+-додається новий запис до таблиці Accesskey (UniqueID, value);
+-додається запис User.AccesskeyID до таблиці;
+
+Сценарій 3:
+Регенерація Accesskey:
+-оновлюється запис в таблиці Accesskey.value;
+
+Сценарій 4:
+Зміна ролі:
+-оновлюється запис ролі користувача User.RoleID;
+
+Сценарій 5:
+Створення данних в таблиці SizeChartClothes адміністратором:
+-додається UniqueID;
+-додаються розміри EU, UK, USA, International;
+-додаються охвати Bust(Chest)_in_cm, Bust(Chest)_in_inches, Waist_in_inches,
+ Waist_in_cm, Hips_in_inches, Hips_in_cm;
+-додається стать SexID;
+
+Сценарій 6:
+Оновлення данних SizeChartClothes адміністратором:
+-оновлюються дані EU / UK / USA / International / Bust(Chest)_in_cm / Bust(Chest)_in_inches /
+ Waist_in_inches / Waist_in_cm / Hips_in_inches / Hips_in_cm/SexID;
+
+Сценарій 7:
+Видалення данних SizeChartClothes адміністратором:
+-видаляється UniqueID;
+-видаляються дані EU, UK, USA, International, Bust(Chest)_in_cm, Bust(Chest)_in_inches,
+ Waist_in_inches, Waist_in_cm, Hips_in_inches, Hips_in_cm,SexID;
+
+Сценарій 8:
+Створення данних SizeChartShoes адміністратором:
+-створюється UniqueID;
+-створються дані EU ,UK, USA, SexID, cm, inches;
+
+Сценарій 9:
+Оновлення данних SizeChartShoes адміністратором:
+-оновлюються дані EU / UK / USA / SexID / cm / inches;
+
+Сценарій 9:
+Видалення данних SizeChartShoes адміністратором:
+-видаляється UniqueID;
+-видаляються дані EU, UK, USA, SexID, cm, inches;
+
+
+
+

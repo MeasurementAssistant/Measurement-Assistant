@@ -1,0 +1,36 @@
+{
+  "sex": {
+    "female": "femmina",
+    "male": "maschio"
+  },
+  "size": {
+    "shoes": "Taglia scarpe",
+    "clothes": "Taglia vestiti"
+  },
+  "notFound": "Non trovato",
+  "bodyType": {
+    "XShape": "Forma a X",
+    "AShape": "Forma a A",
+    "VShape": "Forma a V",
+    "IShape": "Forma a I",
+    "MixedShape": "Forma mista",
+    "name": "Tipo di corpo"
+  },
+  "description": {
+    "name": "Descrizione",
+    "female": {
+      "XShape": "Il corpo a forma di X ha spalle e fianchi relativamente della stessa dimensione e una vita definita. La parte più larga del corpo sono le cosce, non il fondoschiena, se viste di fronte.",
+      "AShape": "Questa è la classica forma femminile della A, che ha la più sana distribuzione del grasso e meno probabilità di avere malattie cardiache (fortunati!). La donna a forma di A ha le spalle più strette dei fianchi e delle cosce.",
+      "VShape": "Se hai un corpo a V o a triangolo invertito, i fianchi sono più stretti delle spalle. la tua vita potrebbe entrare leggermente o essere un po' più dritta, ma la caratteristica principale che definisce la tua forma sono le diverse proporzioni di spalle e fianchi.",
+      "IShape": "Sai di avere un tipo di corpo dritto se hai le stesse misure per tutte le sezioni del tuo corpo. Questo tipo di corpo è popolarmente conosciuto come il corpo della top model. È anche chiamato corpo rettangolare o righello. Poiché non ha un punto vita ben definito, il corpo tende a sembrare dritto.",
+      "MixedShape": "Ci sono gamme molto ampie di dimensioni reali all'interno di ogni forma. Inoltre, alcune forme del corpo potrebbero non adattarsi a nessuna delle forme elencate di seguito: forma A, forma a V, forma a X, forma a I."
+    },
+    "male": {
+      "XShape": "Il corpo a forma di X ha spalle e fianchi relativamente della stessa dimensione e una vita ordinata. La parte più larga del corpo è spesso le cosce, se viste di fronte. Se questo è il tuo tipo di corpo, come uomo, scoprirai che sei adatto all'allenamento della forza e probabilmente costruisci i muscoli facilmente. Assicurati di costruire quegli invidiabili muscoli di cosce, polpacci e glutei, nonché braccia e spalle. Fai attenzione a non lasciarlo mai ingrassare, dato che il tuo corpo tende a depositare facilmente il grasso. E potresti essere incline a mangiare troppi carboidrati zuccherini. Se puoi, attieniti a diete a basso contenuto di carboidrati.",
+      "AShape": "L'uomo di forma A ha le spalle più strette dei fianchi e delle cosce. Sebbene non sia la classica V per cui molti uomini si sforzano, hai la distribuzione più sana del grasso e hai meno probabilità di avere malattie cardiache (sei fortunato!). L'esercizio cardio aiuterà con la distribuzione del grasso e concentrerà i tuoi sforzi di allenamento con i pesi in palestra sulla parte superiore del corpo. Gli esercizi per pettorali, dorsali e spalle, così come per le braccia, sono fondamentali per questo tipo di corporatura.",
+      "VShape": "Se hai un corpo a V o a triangolo invertito, i fianchi sono più stretti delle spalle. la tua vita potrebbe entrare leggermente o essere un po' più dritta, ma la caratteristica principale che definisce la tua forma sono le diverse proporzioni di spalle e fianchi. Questo è il classico tipo di corpo di Superman. Ricordati di allenare quelle gambe, così come la parte superiore del corpo, per evitare le cosce di pollo!",
+      "IShape": "Il tipo di corpo I è spesso magro, pensa Russell Brand, ma non sempre. David Beckham è un tipo I e sembra fantastico, ma chiaramente ci ha lavorato. Ti adatterai molto bene all'esercizio cardio e, mentre i muscoli si ridurranno, potrai apparire magro e in forma. Se sei in sovrappeso, probabilmente scoprirai di portare il peso in eccesso in modo uniforme. Questo spesso significa che lo perderai anche in modo uniforme.",
+      "MixedShape": "Ci sono gamme molto ampie di dimensioni reali all'interno di ogni forma. Inoltre, alcune forme del corpo potrebbero non adattarsi a nessuna delle forme elencate di seguito: forma A, forma a V, forma a X, forma a I."
+    }
+  }
+}
