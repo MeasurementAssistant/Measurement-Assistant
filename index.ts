@@ -12,7 +12,8 @@ const server = fastify();
 const dbDriver = new PostgresDriver();
 
 server.register(fastifyCors, {
-  origin: 'https://measurementassistant.github.io/Measurement-Assistant-Portal/',
+  origin: 'https://measurment-assistant.herokuapp.com',
+  allowedHeaders: 'Content-Type,Authorization',
   methods: ['GET', 'POST', 'PUT']
 });
 server.register(swagger, swaggerConfig);
