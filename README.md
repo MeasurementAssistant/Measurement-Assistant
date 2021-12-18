@@ -4,8 +4,8 @@
 
 It`s a Rest API service, which helps you choose the right size for clothes or shoes based on your parameters for most size charts, including well-known brands.
 
-- API Authentication with access_key
-  **You can generate it here:** https://measurementassistant.github.io/Measurement-Assistant-Portal/
+- API Authentication with access_key - **you can generate it here:**
+  https://measurementassistant.github.io/Measurement-Assistant-Portal/
 
 ### <ins> API Features for Guest-user</ins>:
 
