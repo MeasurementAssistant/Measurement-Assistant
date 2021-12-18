@@ -1,16 +1,10 @@
 import { FastifySchema } from 'fastify';
 
 export const getAllSizesSchema: FastifySchema = {
-  headers: {
-    type: 'object',
-    properties: {
-      Authorization: { type: 'string' }
-    },
-    required: ['Authorization']
-  },
   querystring: {
     type: 'object',
     properties: {
+      accessKey: { type: 'string' },
       bustSize: { type: 'number' },
       waistSize: { type: 'number' },
       hipsSize: { type: 'number' },
@@ -21,7 +15,7 @@ export const getAllSizesSchema: FastifySchema = {
         enum: ['en', 'de', 'es', 'fr', 'it', 'pl', 'pt', 'ru', 'uk']
       }
     },
-    required: ['bustSize', 'waistSize', 'hipsSize', 'footLength', 'sex']
+    required: ['bustSize', 'waistSize', 'hipsSize', 'footLength', 'sex', 'accessKey']
   },
   params: {
     type: 'object',
