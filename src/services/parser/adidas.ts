@@ -72,7 +72,7 @@ const getClothesData = (html: string) => {
   for (let i = 0; i < dataM.length - 4; i += 4) {
     result.push(
       {
-        RU: dataM[i].slice(-5, -3),
+        RU: Number(dataM[i].slice(-5, -3)),
         EU: dataM[i].slice(0, 2),
         BustCm: Number(dataM[i + 1].split('-')[0]),
         BustInch: (Number(dataM[i + 1].split('-')[0]) / 2.54).toFixed(2),
@@ -83,7 +83,7 @@ const getClothesData = (html: string) => {
         sexId: 2
       },
       {
-        RU: Number(dataM[i].slice(-2)),
+        RU: Number(dataM[i].slice(-8, -5)),
         EU: dataM[i].slice(0, 2),
         BustCm: Number(dataM[i + 1].split('-')[1].replace(' см', '')),
         BustInch: (Number(dataM[i + 1].split('-')[1].replace(' см', '')) / 2.54).toFixed(2),
