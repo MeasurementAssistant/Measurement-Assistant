@@ -87,7 +87,7 @@ class AllSizes {
       doc.text(`${waistSize} ${unit}`, 32, 151);
       doc.text(`${hipsSize} ${unit}`, 32, 162);
 
-      doc.addImage(shapeBuffer, 'PNG', 150, 215, 45, 80);
+      doc.addImage(shapeBuffer, 'PNG', 150, 215, 37, 80);
       doc.setTextColor('#000000');
       doc.setFontSize(12);
       doc.text(i18nObj.__('bodyType.name') + `: ${bodyTypeData.bodyType}`, 45, 240);
