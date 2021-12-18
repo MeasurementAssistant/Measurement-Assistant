@@ -11,7 +11,11 @@ import { configureI18n } from './src/i18n.config';
 const server = fastify();
 const dbDriver = new PostgresDriver();
 
-server.register(fastifyCors, { origin: true, methods: ['GET', 'POST', 'PUT'] });
+server.register(fastifyCors, {
+  origin: ['https://measurment-assistant.herokuapp.com', 'https://measurementassistant.github.io'],
+  allowedHeaders: 'Content-Type,Authorization',
+  methods: ['GET', 'POST', 'PUT']
+});
 server.register(swagger, swaggerConfig);
 
 server.route(routes.getShoesSize);

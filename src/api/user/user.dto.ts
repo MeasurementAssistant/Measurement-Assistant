@@ -5,7 +5,8 @@ export const userSchema: FastifySchema = {
     type: 'object',
     properties: {
       Authorization: { type: 'string' }
-    }
+    },
+    required: ['Authorization']
   },
   body: {
     type: 'object',

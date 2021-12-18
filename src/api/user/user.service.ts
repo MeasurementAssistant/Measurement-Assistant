@@ -24,8 +24,8 @@ class UserService {
       const isTokenId = await this.checkIdToken(idToken, email);
       if (isTokenId) {
         await this.dbDriver.connect();
-        const isUser = await this.findUserIfExists(email);
-        if (!isUser) {
+        const checkUser = await this.findUserIfExists(email);
+        if (!checkUser) {
           const id = await this.createAccessKey(email, googleId);
           await this.dbDriver.executeQuery(createUser(email, id));
         }
@@ -67,7 +67,7 @@ class UserService {
   private async findUserIfExists(username: string): Promise<boolean> {
     try {
       const user: QueryResult = await this.dbDriver.executeQuery(findUser(username));
-      return user && user.rows ? true : false;
+      return user && user.rows[0] ? true : false;
     } catch (error) {
       throw new HttpError(<string>error);
     }
