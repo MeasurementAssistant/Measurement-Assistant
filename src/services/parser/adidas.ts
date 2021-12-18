@@ -73,7 +73,7 @@ const getClothesData = (html: string) => {
     result.push(
       {
         RU: Number(dataM[i].slice(-5, -3)),
-        EU: dataM[i].slice(0, 2),
+        EU: dataM[i].slice(-8, -5),
         BustCm: Number(dataM[i + 1].split('-')[0]),
         BustInch: (Number(dataM[i + 1].split('-')[0]) / 2.54).toFixed(2),
         WaistCm: Number(dataM[i + 2].split('-')[0]),
@@ -83,8 +83,8 @@ const getClothesData = (html: string) => {
         sexId: 2
       },
       {
-        RU: Number(dataM[i].slice(-8, -5)),
-        EU: dataM[i].slice(0, 2),
+        RU: Number(dataM[i].slice(-2)),
+        EU: dataM[i].slice(-8, -5),
         BustCm: Number(dataM[i + 1].split('-')[1].replace(' см', '')),
         BustInch: (Number(dataM[i + 1].split('-')[1].replace(' см', '')) / 2.54).toFixed(2),
         WaistCm: Number(dataM[i + 2].split('-')[1].replace(' см', '')),
